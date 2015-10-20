@@ -1,0 +1,38 @@
+git init : initalize repository in current foldergit
+git add <file name> : indicate that file is ready to be add to repo.
+git add . : add all file
+touch .gitignore : ignore those files which is mentioned in .gitignore file for commit.
+git commit -m "<your message>" : for commit.
+
+branching (this functionality is for change your change in file and do not disturb master)
+git branch <your branch name> : create a new branch
+git checkout <your branch name> : change your workspace to master to current new branch.
+touch index.css
+git merge <your branch name> : merge all file from branches to master
+
+git merge master : <merge confilict will create>
+
+==>
+	<<<<<<< HEAD
+		<change part in branch> 
+	=======
+		<original part in master>
+	>>>>>>> master
+[above thing is known as merge confilict]
+
+
+=========================================
+git remote : to work with remote repo
+git clone <url> [https://github.com/unnatRevo/Billboard.git] : this will clone entire repo to your local machine.
+cd <dir name>
+git remote -v : gives you default path of dir <git repo>
+git pull origin : will fetch all modified that has been made in local repo.
+
+steps :
+git remote
+git clone https://github.com/unnatRevo/Billboard.gitgit remote
+cd Billboard
+git remote
+git remote -v
+git fetch origin
+git pull origin
