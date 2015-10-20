@@ -130,9 +130,9 @@ session_start();
 								  <th>Hostel Name</th>
 								  <th>Hostel Address</th>
 								  <th>Hostel For</th>
-								  <th style="text-align:center">Operations</th>
-								  <th style="text-align:center"></th>
-								  <th style="text-align:center"></th>
+								  <th style="text-align:center">Report</th>
+								  <th style="text-align:center">Edit</th>
+								  <th style="text-align:center">Delete</th>
 							  </tr>
 						  </thead>
 
@@ -174,7 +174,7 @@ session_start();
 								</td>
 
 								<td class="center" style="text-align:center">
-									<a href="hostelView.php?id=<?php echo $row['nHostelId']; ?>">
+									<a href="/schoolNew/View/reports/hostelReport.php?id=<?php echo $row['nHostelId']; ?>">
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
 								</td>
