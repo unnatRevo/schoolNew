@@ -9,5 +9,5 @@ $id = $_GET['id'];
 $obj = new dbHostel();
 $obj->hostelDelete($id);
 
-header('location: /schoolNew/View/hostels/hostelList.php');
+header('location: /schoolNew/View/students/studentList.php');
 ?>

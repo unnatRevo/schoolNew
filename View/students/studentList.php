@@ -231,7 +231,7 @@ include '../../Model/dbStudent.php';
 								</td>
 								
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/students/studentView.php">
+									<a href="/schoolNew/View/reports/studentReport.php">
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
 								</td>
