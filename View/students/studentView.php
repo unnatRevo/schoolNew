@@ -1,10 +1,11 @@
 <?php
+session_start();
 include '../../Model/dbStudent.php';
 
-$id 	= $_GET['id'];
+//$id 	= $_GET['id'];
 
 $obj 	= new dbStudent;
-$result = $obj->studentViewSingle($id);
+$result = $obj->studentViewSingle('id');
 $row 	= mysqli_fetch_assoc($result);
 
 //print_r($row);
@@ -44,6 +45,11 @@ $row 	= mysqli_fetch_assoc($result);
 </head>
 
 <body>
+<?php
+	if ( !isset ($_SESSION['username']) ){
+		header("location: /schoolNew/View/user/login.php");
+	}
+?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">

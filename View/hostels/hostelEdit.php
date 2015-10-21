@@ -111,7 +111,7 @@ $row = mysqli_fetch_assoc($result);
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal" action="../Controller/hostelUpdateCon.php" method="POST">
+						<form class="form-horizontal" action="../../Controller/hostels/hostelUpdateCon.php" method="POST">
 							<fieldset>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Hostel Name</label>
