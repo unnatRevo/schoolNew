@@ -108,7 +108,7 @@ $row 	= mysqli_fetch_assoc($result);
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon list"></i><span class="break"></span><b>Hostels</b></h2>
+						<h2><i class="halflings-icon list"></i><span class="break"></span><b>Student Report</b></h2>
 						<div class="box-icon">
 						
 							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
@@ -172,56 +172,37 @@ $row 	= mysqli_fetch_assoc($result);
 							<td>Standard</td>
 							<td>
 								<?php
-									include '../../Model/dbReport.php';
-									$obj = new dbReport;
-									$obj->demo();
+									$res = $obj->studentStandard($id);
+									while ( $row = mysqli_fetch_assoc($res)){
+										if ( $row['nStandardId'] == 1 ) echo "10";
+										else if ( $row['nStandardId'] == 2 ) echo "11";
+										else  echo "12";
+									}
+								?>
+							</td>
+						</tr>
+						<tr>
+							<td>Attendence</td>
+							<td>
+								<?php
+									echo "yet to understand. :P";
+								?>
+							</td>
+						</tr>
+						<tr>
+							<td>Group</td>
+							<td>
+								<?php
+									$grp = $obj->getSingleStudentView($id);
+									
+									while ($row = mysqli_fetch_assoc($grp)){
+										if ( $row['btStreamGroup'] == 1 ) echo "Maths";
+										else echo "Biology";
+									}
 								?>
 							</td>
 						</tr>
 					</table>
-					
-						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-								<tr>
-									
-									<td style="text-align:center"><?php echo $row['nGRNO']; ?></td>
-									<td style="text-align:center"><?php echo $row['tFname']; ?></td>
-									<td style="text-align:center"><?php echo $row['tMname']; ?></td>
-									<td style="text-align:center"><?php echo $row['tLname']; ?></td>
-									<td style="text-align:center">
-									<?php
-										if ( $row['bGender'] == 1){
-										?>
-											<b><font color="blue">M</font></b>
-										<?php
-										} else {
-											?>
-											<b><font color="megenta">F</font></b>
-											<?php
-										}
-									?>	
-									</td>
-									<td style="text-align:center"><?php echo date_format( date_create($row['dBirthDate']), 'd/m/Y' ); ?></td>
-									<td style="text-align:center"><?php echo date_format( date_create($row['dAdmissionDate']), 'd/m/Y' ); ?></td>
-									<td style="text-align:center">
-									<?php
-										if ( $row['bStaysAtHostel'] == 1 ){
-											?>
-											<font color="green"><i class="fa fa-check"></i></font>
-											<?php
-										} else {
-											?>
-											<font color="red"><i class="fa fa-times"></i></font>
-											<?php
-										}
-									?>
-									</td>
-									<td style="text-align:center"><?php echo $row['btStreamGroup']; ?></td>
-								</tr>
-						  <tbody>
-						
-							
-						  </tbody>
-					  </table>            
 					</div>
 				</div><!--/span-->
 					

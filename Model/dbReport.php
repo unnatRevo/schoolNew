@@ -1,13 +1,13 @@
 <?php
-	include '/../../Model/dbHostel.php';
-	include '/../../Model/dbStudent.php';
-	include '/../../Model/dbStandard.php';
+	include 'dbHostel.php';
+	include 'dbStudent.php';
+	include 'dbStandard.php';
+
 class dbReport {
 	
-	function demo(){
+	function master(){
 		$stuObj = new dbStudent;
-		$studentData = $stuObj->getAllStudentData();
-		print_r($studentData);	
+		print_r($stuObj->getAllStudentData());
 	}	
 }
 ?>

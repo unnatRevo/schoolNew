@@ -1,7 +1,6 @@
 <?php
 
-class dbStudent
-{
+class dbStudent{
 	function dbconnectModel()
 	{
 		$servername 	= "localhost";
@@ -388,6 +387,16 @@ class dbStudent
 		mysqli_close($conn);
 		
 	}
+	
+	function getSingleStudentView($id){
+		$conn = $this->dbconnectModel( ) ;
+
+		$qry = " SELECT * FROM tblstudent WHERE nGRNO = $id";
+		
+		$result = mysqli_query( $conn, $qry ) ;
+		
+		return $result ;
+	}
 
 	function getAllStudentView()
 	{
@@ -410,25 +419,13 @@ class dbStudent
 		
 		return $result ;
 	}
+	
+	function studentStandard($id){
+		$conn = $this->dbconnectModel();
+		$qry = "SELECT nStandardId FROM tblstudentstandard WHERE nGRNO = $id";
+		$result = mysqli_query($conn, $qry);
+		return $result;
+	}
 
 }
-
-
-	// function checkDate( $atdDate )
-	// {
-	// 	$conn = $this->dbconnectModel( ) ;
-
-	// 	$toDate = strtotime( $atdDate ) ;
-
-	// 	$qry = " SELECT dDay FROM  "
-	// 			. " tblattendence "
-	// 			. " WHERE " 
-	// 			. " dDay = $toDate " ;
-
-	// 	$result = mysqli_query( $conn, $qry ) ;
-
-	// 	return mysqli_num_rows( $result ) ;
-
-	// }	
-
 ?>
