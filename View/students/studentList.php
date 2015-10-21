@@ -17,13 +17,13 @@ include '../../Model/dbStudent.php';
 	<!-- end: Mobile Specific -->
 	
 	<!-- start: CSS -->
-	<link id="bootstrap-style" href="../../Theme/css/bootstrap.min.css" rel="stylesheet">
-	<link id="bootstrap-style" href="../../Theme/css/custom.css" rel="stylesheet">
-	<link href="../../Theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link id="base-style" href="../../Theme/css/style.css" rel="stylesheet">
-	<link id="base-style-responsive" href="../../Theme/css/style-responsive.css" rel="stylesheet">
-	<link id="font-awesome" href="../../Theme/css/font-awesome.css" rel="stylesheet">
-	<link id="font-awesomemin" href="../../Theme/css/font-awesome.min.css" rel="stylesheet">
+	<link id="bootstrap-style" href="/schoolNew/Theme/css/bootstrap.min.css" rel="stylesheet">
+	<link id="bootstrap-style" href="/schoolNew/Theme/css/custom.css" rel="stylesheet">
+	<link href="/schoolNew/Theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link id="base-style" href="/schoolNew/Theme/css/style.css" rel="stylesheet">
+	<link id="base-style-responsive" href="/schoolNew/Theme/css/style-responsive.css" rel="stylesheet">
+	<link id="font-awesome" href="/schoolNew/Theme/css/font-awesome.css" rel="stylesheet">
+	<link id="font-awesomemin" href="/schoolNew/ThemeTheme/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	<!-- end: CSS -->
 	
