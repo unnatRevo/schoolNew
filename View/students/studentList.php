@@ -23,7 +23,7 @@ include '../../Model/dbStudent.php';
 	<link id="base-style" href="/schoolNew/Theme/css/style.css" rel="stylesheet">
 	<link id="base-style-responsive" href="/schoolNew/Theme/css/style-responsive.css" rel="stylesheet">
 	<link id="font-awesome" href="/schoolNew/Theme/css/font-awesome.css" rel="stylesheet">
-	<link id="font-awesomemin" href="/schoolNew/ThemeTheme/css/font-awesome.min.css" rel="stylesheet">
+	<link id="font-awesomemin" href="/schoolNew/Theme/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	<!-- end: CSS -->
 	
@@ -231,17 +231,17 @@ include '../../Model/dbStudent.php';
 								</td>
 								
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/reports/studentReport.php">
+									<a href="/schoolNew/View/reports/studentReport.php?id=<?php echo $row['nGRNO']; ?>">
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
 								</td>
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/students/studentEdit.php">
+									<a href="/schoolNew/View/students/studentEdit.php?id=<?php echo $row['nGRNO']; ?>">
 										<font color="blue"><i class="fa fa-pencil-square-o"></i></font>
 									</a>
 								</td>
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/students/studentDelete.php" onClick="return confirm('Are you sure to delete this data ?');">
+									<a href="/schoolNew/View/students/studentDelete.php?id=<?php echo $row['nGRNO']; ?>" onClick="return confirm('Are you sure to delete this data ?');">
 										<font color="red"><i class="fa fa-trash-o"></i></font> 
 									</a>
 								</td>

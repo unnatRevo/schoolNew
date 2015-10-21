@@ -1,23 +1,14 @@
 <?php
 session_start();
-include '../../Model/dbHostel.php';
+include '../../Model/dbStudent.php';
 
 $id 	= $_GET['id'];
 
-$obj 	= new dbHostel;
-$result = $obj->hostelViewSingle($id);
+$obj 	= new dbStudent;
+$result = $obj->studentViewSingle($id);
 $row 	= mysqli_fetch_assoc($result);
 
 //print_r($row);
-
-if ( $row['bHostelFor'] == 1 )
-{
-	$for = "Boys";
-}
-else
-{
-	$for = "Girls";
-}
 
 //echo "<br>".$for;
 
@@ -110,7 +101,7 @@ else
 					<a href="#">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">Hostel View</a></li>
+				<li><a href="#">Student Report</a></li>
 			</ul>		
 				
 			
@@ -126,28 +117,105 @@ else
 					
 					
 					<?php
-						$obj = new dbHostel;
-						$result = $obj->getDataHostelModel1();
+						$obj = new dbStudent;
+						$result = $obj->getAllStudentView();
 					?>
 					
-					
 					<div class="box-content">
+					
+					<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						<tr>
+							<td style="width: 150px;">
+								<img src="../user/pokerface.png" height="100" width="150">
+							</td>
+							
+							<td>
+								<table class="table table-striped table-bordered bootstrap-datatable datatable">
+									<tr>
+										<td style="width:100px;">GRNO</td>
+										<td><?php echo $row['nGRNO']; ?></td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td><?php echo $row['tFname']." ".$row['tMname']." ".$row['tLname']; ?></td>
+									</tr>
+									<tr>
+										<td>Gender</td>
+										<td>
+											
+											<?php
+										if ( $row['bGender'] == 1){
+										?>
+											<b><font color="blue">M</font></b>
+										<?php
+										} else {
+											?>
+											<b><font color="magenta">F</font></b>
+											<?php
+										}
+									?>	
+											
+										</td>
+									</tr>
+									<tr>
+										<td>DOB</td>
+										<td><?php echo date_format( date_create($row['dBirthDate']), 'd/m/Y' ); ?></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>Admission Date</td>
+							<td><?php echo date_format( date_create($row['dAdmissionDate']), 'd/m/Y' ); ?></td>
+						</tr>
+						<tr>
+							<td>Standard</td>
+							<td>
+								<?php
+									include '../../Model/dbReport.php';
+									$obj = new dbReport;
+									$obj->demo();
+								?>
+							</td>
+						</tr>
+					</table>
+					
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								  <th style="text-align:center">Hostel ID</th>
-								  <th style="text-align:center">Hostel Name</th>
-								  <th style="text-align:center">Hostel For</th>
-								  <th style="text-align:center">Hostel Address</th>
-								  <th style="text-align:center">Hostel Capacity</th>
-							  </tr>
-						  </thead>
 								<tr>
-									<td style="text-align:center"><?php echo $row['nHostelId']; ?></td>
-									<td style="text-align:center"><?php echo $row['tHostelName']; ?></td>
-									<td style="text-align:center" ><?php echo $for ?></td>
-									<td style="text-align:center"><?php echo $row['tHostelAddress']; ?></td>
-									<td style="text-align:center"><?php echo $row['nHostelCapacity']; ?></td>
+									
+									<td style="text-align:center"><?php echo $row['nGRNO']; ?></td>
+									<td style="text-align:center"><?php echo $row['tFname']; ?></td>
+									<td style="text-align:center"><?php echo $row['tMname']; ?></td>
+									<td style="text-align:center"><?php echo $row['tLname']; ?></td>
+									<td style="text-align:center">
+									<?php
+										if ( $row['bGender'] == 1){
+										?>
+											<b><font color="blue">M</font></b>
+										<?php
+										} else {
+											?>
+											<b><font color="megenta">F</font></b>
+											<?php
+										}
+									?>	
+									</td>
+									<td style="text-align:center"><?php echo date_format( date_create($row['dBirthDate']), 'd/m/Y' ); ?></td>
+									<td style="text-align:center"><?php echo date_format( date_create($row['dAdmissionDate']), 'd/m/Y' ); ?></td>
+									<td style="text-align:center">
+									<?php
+										if ( $row['bStaysAtHostel'] == 1 ){
+											?>
+											<font color="green"><i class="fa fa-check"></i></font>
+											<?php
+										} else {
+											?>
+											<font color="red"><i class="fa fa-times"></i></font>
+											<?php
+										}
+									?>
+									</td>
+									<td style="text-align:center"><?php echo $row['btStreamGroup']; ?></td>
 								</tr>
 						  <tbody>
 						
@@ -156,6 +224,7 @@ else
 					  </table>            
 					</div>
 				</div><!--/span-->
+					
 			
 			</div><!--/row-->
 		
