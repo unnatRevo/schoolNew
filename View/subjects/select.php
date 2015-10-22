@@ -1,13 +1,10 @@
 <?php
-session_start();
+
 //include "../include/config.php";
 
 include '../../Model/dbHostel.php' ;
 include '../../Model/dbStudent.php' ;
 
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
 function listStudentName( $hostelList, $standard )
 {
 //$sql="select * from tblHostel where nHostelId='".$_POST['hostelList']."'";

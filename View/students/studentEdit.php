@@ -1,25 +1,21 @@
 <?php
-session_start();
-include '../../Model/dbHostel.php';
+	
+include '../../Model/dbStudent.php';
 
 $id = $_GET['id'];
 
-$obj = new dbHostel;
-$result = $obj->hostelViewSingle($id);
+$obj = new dbStudent;
+$result = $obj->studentViewSingle($id);
 $row = mysqli_fetch_assoc($result);
 
-//print_r($row);
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Hostel Entry</title>
+	<title>Student Edit</title>
 	
 	<!-- end: Meta -->
 	
@@ -44,11 +40,6 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -78,7 +69,7 @@ $row = mysqli_fetch_assoc($result);
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="hostelList.php"><i class="icon-th-list"></i><span class="hidden-tablet"> Hostel List</span></a></li>
-						<li><a href="hostelEntry.php"><i class="icon-plus"></i><span class="hidden-tablet"> Edit Hostel</span></a></li>	
+						<li><a href="hostelEntry.php"><i class="icon-plus"></i><span class="hidden-tablet"> Add Hostel</span></a></li>	
 					</ul>
 				</div>
 			</div>
@@ -98,12 +89,12 @@ $row = mysqli_fetch_assoc($result);
 					<a href="#">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">Edit Hostel</a></li>
+				<li><a href="#">Edit Student</a></li>
 			</ul>		
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon plus"></i><span class="break"></span>Edit Hostel</h2>
+						<h2><i class="halflings-icon plus"></i><span class="break"></span>Edit Student</h2>
 						<div class="box-icon">
 							
 							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
@@ -111,63 +102,142 @@ $row = mysqli_fetch_assoc($result);
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal" action="../Controller/hostelUpdateCon.php" method="POST">
+						<form class="form-horizontal" action="../../Controller/student/studentUpdateCon.php" method="POST">
 							<fieldset>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">Hostel Name</label>
+								<label class="control-label" for="focusedInput">Student Name</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" name="tHostelName" type="text" value="<?php echo $row['tHostelName']; ?>">
+								  <input class="input-xlarge focused" name="tFname" value="<?php echo $row['tFname']?>" type="text">
+								  <input class="input-xlarge focused" name="tMname" value="<?php echo $row['tMname']?>" type="text">
+								  <input class="input-xlarge focused" name="tLname" value="<?php echo $row['tLname']?>" type="text">
 								</div>
 							  </div>
 							   <div class="control-group">
-								<label class="control-label">Hostel For</label>
+								<label class="control-label">Gender</label>
 								<div class="controls">
 								  <label class="radio">
-								  <?php
-								  if($row['bHostelFor']==1)
+								  	<?php
+								  if($row['bGender']==1)
 								  { ?>
-									<input type="radio" name="bHostelFor" value="1" checked="">
-									Boys
+									<input type="radio" name="bGender" value="1" checked="">
+									Male
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="bHostelFor" value="0">
-									Girls
+									<input type="radio" name="bGender" value="0">
+									Female
 								  </label>
 								  <?php
 								  }
 								  else
 								  { ?>
-									<input type="radio" name="bHostelFor" value="1" >
+									<input type="radio" name="bGender" value="1" >
 									Boys
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="bHostelFor" value="0" checked="">
+									<input type="radio" name="bGender" value="0" checked="">
 									Girls
 								  </label>
 								  <?php
 								  }
 								  ?>
+
 								</div>
 								</div>
+
+								
+
+								<div class="control-group">
+									<label class="control-label">Date Of Birth</label>  
+									 <input type="date" name="dBirthDate" value="<?php echo $row['dBirthDate']?>" />
+								</div>
+
+								<div class="control-group">
+									<label class="control-label">Date Of Admission</label>  
+									 <input type="date" name="dAdmissionDate" value="<?php echo $row['dAdmissionDate']?>" />
+								</div>
+								
+								
 								<div class="control-group hidden-phone">
-									<label class="control-label">Address</label>
+									<label class="control-label">Active </label>
 									<div class="controls">
-										<textarea name="tHostelAddress" rows="2"><?php echo $row['tHostelAddress']; ?> </textarea>
+									<?php
+									if($row['bIsActive']==1)
+									{
+									?>
+									<!-- <input type="number" name="hostelcapacity" min="1" /> -->
+									<label class="radio">
+									<input type="radio" name="bIsActive" value="1" checked="">
+									Yes
+								   </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="bIsActive" value="0">
+									No
+								  </label>
+								  <?php
+									}
+									else
+									{
+								  ?>	
+								  label class="radio">
+									<input type="radio" name="bIsActive" value="1" >
+									Yes
+								   </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="bIsActive" value="0" checked="">
+									No
+								  </label>
+
+								  <?php 
+									}
+								  ?>
 									</div>
 								</div>
-								<div class="control-group hidden-phone">
-									<label class="control-label">Capacity</label>
-									<div class="controls">
-										<input type="number" name="nHostelCapacity" min="1" value="<?php echo $row['nHostelCapacity']; ?>"/>
-									</div>
-								</div>
-								<input type="hidden" name="id" value="<?php echo $row['nHostelId']; ?>" >
 							  
+								<div class="control-group hidden-phone">
+									<label class="control-label">Standard Stream </label>
+									<div class="controls">
+										<!-- <input type="number" name="hostelcapacity" min="1" /> -->
+										<?php
+										if($row['btStreamGroup'] == 2)
+										{
+										?>
+										<label class="radio">
+									<input type="radio" name="btStreamGroup" value="2" checked="">
+									11
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="btStreamGroup" value="3">
+									12
+								  </label>
+								  <?php
+									}
+									else
+									{
+								  ?>
+								  <label class="radio">
+									<input type="radio" name="btStreamGroup" value="2" >
+									11
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio">
+									<input type="radio" name="btStreamGroup" value="3" checked="">
+									12
+								  </label>
+								  <?php
+									}
+								  ?>
+									</div>
+								</div>
+ 								<input type="hidden" name="id" value="<?php echo $row['nGRNO']; ?>" >
 							  <div class="form-actions">
+								<!-- <button type="submit" class="btn btn-primary">Save</button> -->
 								<button type="submit" class="btn btn-primary">Save</button>
-								<a href="hostelList.php"><button type="button" class="btn">Cancel</button></a>
+								<a href="studentList.php"><button type="button" class="btn">Cancel</button></a>
 							  </div>
 							</fieldset>
 						  </form>

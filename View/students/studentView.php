@@ -1,11 +1,10 @@
 <?php
-session_start();
 include '../../Model/dbStudent.php';
 
-//$id 	= $_GET['id'];
+$id 	= $_GET['id'];
 
 $obj 	= new dbStudent;
-$result = $obj->studentViewSingle('id');
+$result = $obj->studentViewSingle($id);
 $row 	= mysqli_fetch_assoc($result);
 
 //print_r($row);
@@ -45,11 +44,6 @@ $row 	= mysqli_fetch_assoc($result);
 </head>
 
 <body>
-<?php
-	if ( !isset ($_SESSION['username']) ){
-		header("location: /schoolNew/View/user/login.php");
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -151,20 +145,22 @@ $row 	= mysqli_fetch_assoc($result);
 										if ( $row['bGender'] == 1 )
 										{
 									?>
-											<font color="blue">M</font>
+											<b><font color="blue">M</font>
 									<?php
 										}
 										else
 										{
 									?>
-											<font color="magenta">F</font>
+											<b><font color="magenta">F</font>
 									<?php
 										}
 									?>
 								</td>
 									<!-- <td style="text-align:center"><?php echo $row['bGender']; ?></td> -->
-									<td style="text-align:center"><?php echo $row['dBirthDate']; ?></td>
-									<td style="text-align:center"><?php echo $row['dAdmissionDate']; ?></td>
+									<td style="text-align:center"><?php echo date_format (  date_create ($row['dBirthDate']), 'd/m/Y' ) ; ?></td>
+
+
+									<td style="text-align:center"><?php echo date_format (  date_create ($row['dAdmissionDate']), 'd/m/Y' ) ; ?></td>
 									
 									<!--<td style="text-align:center" ><?php echo $for ?></td>-->
 									<td class="center" style="text-align:center">

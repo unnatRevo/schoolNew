@@ -1,6 +1,3 @@
-<?php
-	session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +29,6 @@
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -131,6 +123,11 @@
 									<label class="control-label">Capacity</label>
 									<div class="controls">
 										<input type="number" name="hostelcapacity" min="1" />
+									</div>
+									<div class="control-group hidden-phone">
+									<label class="control-label">Max Room Capacity</label>
+									<div class="controls">
+										<input type="number" name="nMaxCapacity" min="1" />
 									</div>
 								</div>
 							  

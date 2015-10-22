@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include '../../Model/dbSubject.php';
 
 $id = $_GET['id'];
@@ -44,11 +44,6 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">

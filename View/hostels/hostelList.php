@@ -1,21 +1,20 @@
 <?php
-session_start();
-	include '../../Model/dbHostel.php';
-?>	
+include '../../Model/dbHostel.php';
+?>
 
 <html lang="en">
 <head>
-
+	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>Hostel List</title>
-
+	
 	<!-- end: Meta -->
-
+	
 	<!-- start: Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Mobile Specific -->
-
+	
 	<!-- start: CSS -->
 	<link id="bootstrap-style" href="../../Theme/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../../Theme/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -25,19 +24,14 @@ session_start();
 	<link id="font-awesomemin" href="../../Theme/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	<!-- end: CSS -->
-
+		
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="../../Theme/img/favicon.ico">
 	<!-- end: Favicon -->
-
+	
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -48,17 +42,17 @@ session_start();
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" href="index.html"><span>School</span></a>
-
-
-
+								
+				
+				
 			</div>
 		</div>
 	</div>
 	<!-- start: Header -->
-
+	
 		<div class="container-fluid-full">
 		<div class="row-fluid">
-
+				
 			<!-- start: Main Menu -->
 
 			<?php
@@ -75,31 +69,31 @@ session_start();
 								<span class="hidden-tablet"> Hostel List</span>
 							</a>
 						</li>
-						<li><a href="hostelEntry.php"><i class="icon-plus"></i><span class="hidden-tablet"> Add Hostel</span></a></li>
+						<li><a href="hostelEntry.php"><i class="icon-plus"></i><span class="hidden-tablet"> Add Hostel</span></a></li>	
 					</ul>
 				</div>
 			</div>
 			-->
-
+			
 			<!-- end: Main Menu -->
-
-
-
+			
+			
+			
 			<!-- start: Content -->
 			<div id="content" class="span10">
-
-
+			
+			
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="#">Home</a>
+					<a href="#">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">Hostel List</a></li>
-			</ul>
-
-
-			<div class="row-fluid sortable">
+			</ul>		
+			
+			
+			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
 						<h2>
@@ -114,14 +108,14 @@ session_start();
 							</a>
 						</div>
 					</div>
-
-
+					
+					
 					<?php
 						$obj = new dbHostel;
 						$result = $obj->getDataHostelModel1();
 					?>
-
-
+					
+					
 					<div class="box-content">
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
@@ -130,12 +124,12 @@ session_start();
 								  <th>Hostel Name</th>
 								  <th>Hostel Address</th>
 								  <th>Hostel For</th>
-								  <th style="text-align:center">Report</th>
+								  <th style="text-align:center">View</th>
 								  <th style="text-align:center">Edit</th>
 								  <th style="text-align:center">Delete</th>
 							  </tr>
 						  </thead>
-
+							
 						  <tbody>
 						 <?php
 							$i = 1;
@@ -158,23 +152,23 @@ session_start();
 										if ( $row['bHostelFor'] == 1 )
 										{
 									?>
-											<font color="blue">M</font>
+											<b><font color="blue">M</font>
 											<!-- <font color="blue"><i class="fa fa-check"></i></font> -->
-
+											
 									<?php
 										}
 										else
 										{
 									?>
-											<font color="magenta">F</font>
-
+											<b><font color="magenta">F</font>
+											
 									<?php
 										}
 									?>
 								</td>
-
+								
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/reports/hostelReport.php?id=<?php echo $row['nHostelId']; ?>">
+									<a href="hostelView.php?id=<?php echo $row['nHostelId']; ?>">
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
 								</td>
@@ -185,7 +179,7 @@ session_start();
 								</td>
 								<td class="center" style="text-align:center">
 									<a href="hostelDelete.php?id=<?php echo $row['nHostelId']; ?>" onClick="return confirm('Are you sure to delete this data ?');">
-										<font color="red"><i class="fa fa-trash-o"></i></font>
+										<font color="red"><i class="fa fa-trash-o"></i></font> 
 									</a>
 								</td>
 							</tr>
@@ -194,27 +188,27 @@ session_start();
 							}
 						?>
 						  </tbody>
-					  </table>
+					  </table>            
 					</div>
 				</div><!--/span-->
-
+			
 			</div><!--/row-->
-
+		
 			</div><!--/.fluid-container-->
-
+				
+			
+			<!-- ---------------- -->	
+			
+			
 
 			<!-- ---------------- -->
-
-
-
-			<!-- ---------------- -->
-
+	
 			<!-- end: Content -->
 		</div><!--/#content.span10-->
 		</div><!--/fluid-row-->
-
+		
 	<div class="clearfix"></div>
-
+	
 	<footer>
 
 		<p>
@@ -222,7 +216,7 @@ session_start();
 		</p>
 
 	</footer>
-
+	
 	<!-- start: JavaScript-->
 
 		<?php
@@ -230,6 +224,6 @@ session_start();
 		?>
 
 	<!-- end: JavaScript-->
-
+	
 </body>
 </html>

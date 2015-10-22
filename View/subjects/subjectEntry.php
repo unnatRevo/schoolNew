@@ -1,7 +1,3 @@
-<?php
-
-	session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,11 +29,6 @@
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -88,7 +79,7 @@
 					</div>
 					
 					<div class="box-content">
-						<form class="form-horizontal" action="/school/Controller/subjects/subjectEntryCon.php" method="POST">
+						<form class="form-horizontal" action="../../Controller/subjects/subjectEntryCon.php" method="POST">
 							<fieldset>
 							  
 								<div class="control-group">

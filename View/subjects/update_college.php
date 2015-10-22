@@ -1,17 +1,10 @@
 <?php
-session_start();
 //include "../include/config.php";
 //include "include/secure.php";
 
 include '../../Model/dbHostel.php' ;
 include '../../Model/dbStudent.php' ;
 
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-	if ( isset( $_SESSION['username'] ) ){
-		header('location: /schoolNew/View/students/studentsList.php');
-	}
 
 if($_SERVER['REQUEST_METHOD']=='POST')
 {

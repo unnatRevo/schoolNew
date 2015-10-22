@@ -1,9 +1,5 @@
 <?php
-session_start();
 include '../../Model/dbSubject.php';
-if ( isset( $_SESSION['username'] ) ){
-		header('location: /schoolNew/View/students/studentsList.php');
-	}
 ?>
 
 <html lang="en">
@@ -36,11 +32,6 @@ if ( isset( $_SESSION['username'] ) ){
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -113,7 +104,7 @@ if ( isset( $_SESSION['username'] ) ){
 								  <th>Serial</th>
 								  <th>Subject Name</th>
 								  <th>Standard</th>
-								  <th style="text-align:center">View</th>
+								  <!-- <th style="text-align:center">View</th> -->
 								  <th style="text-align:center">Edit</th>
 								  <th style="text-align:center">Delete</th>
 							  </tr>
@@ -138,11 +129,11 @@ if ( isset( $_SESSION['username'] ) ){
 								</td>
 								
 								
-								<td class="center" style="text-align:center">
+								<!-- <td class="center" style="text-align:center">
 									<a href="subjectView.php?id=<?php echo $row['nSubjectId']; ?>">
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
-								</td>
+								</td> -->
 								<td class="center" style="text-align:center">
 									<a href="subjectEdit.php?id=<?php echo $row['nSubjectId']; ?>">
 										<font color="blue"><i class="fa fa-pencil-square-o"></i></font>

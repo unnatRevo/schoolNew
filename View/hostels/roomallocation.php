@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+
 ini_set('display_error', true) ;
 error_reporting(E_ALL | E_NOTICE) ;
 
@@ -40,11 +40,6 @@ include '../../Model/dbStudent.php' ;
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -125,7 +120,7 @@ include '../../Model/dbStudent.php' ;
 								$roomRow = mysqli_fetch_assoc($roomDetails);
 								extract( $roomRow ) ;
 
-								$allStudentData = $stdObj->getAllStudentData( ) ;
+								$allStudentData = $stdObj->getAllStudentDatas( ) ;
 								//$allStudent = mysqli_fetch_assoc($allStudentData);
 								//extract($allStudent);
 
@@ -134,13 +129,31 @@ include '../../Model/dbStudent.php' ;
 			<input type = "hidden" name = "nHostelId"	value = "<?php echo $_GET[ 'nHostelId' ] ;	?>"	/>
 			<input type = "hidden" name = "nRoomId"		value = "<?php echo $_GET[ 'nRoomId' ] ;	?>"	/>
 			<input type = "hidden" name = "total"		value = "<?php echo $_GET[ 'total' ] ;		?>"	/>
+			
 							
 			
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Hostel Name</label>
 								<label class="control-label" for="focusedInput"><?php echo $tHostelName ; ?></label>
 								</div>
-			
+
+								<div class="control-group">
+								<label class="control-label" for="focusedInput">Hostel For</label>
+								<?php
+									if ( $bHostelFor == 1 )
+									{
+								?>
+								<label class="control-label" for="focusedInput">MALE</label>
+								<?php
+								}
+								else
+								{
+								?>
+								<label class="control-label" for="focusedInput">FEMALE</label>
+								<?php
+								}	
+								?>
+								</div>
 							   <div class="control-group">
 								<label class="control-label">Room No.</label>
 								<label class="control-label" for="focusedInput"><?php echo $tRoomNo ; ?></label>
@@ -175,7 +188,9 @@ include '../../Model/dbStudent.php' ;
 											<option value="#"> --ALLOCATE-- </option>
 
 												<?php	
-													$allStudentData = $stdObj->getAllStudentData( ) ;
+													if ( $bHostelFor == 1 ){
+														$genderId = 1;
+													$allStudentData = $stdObj->getAllStudentData($genderId) ;
 													while( $row = mysqli_fetch_assoc( $allStudentData ) )
 													{
 														extract( $row ) ;
@@ -193,6 +208,31 @@ include '../../Model/dbStudent.php' ;
 														}
 														
 													}
+												}
+												else
+												{
+													$genderId = 0;
+													$allStudentData = $stdObj->getAllStudentData($genderId) ;
+													while( $row = mysqli_fetch_assoc( $allStudentData ) )
+													{
+														extract( $row ) ;
+												
+														
+														if( $row['nGRNO'] == $_GET[ $nRoomId.$iterator ] )
+														{
+												?> 			<option selected="true" value="<?php echo $nGRNO; ?>"> <?php echo $tFname . " " . $tLname ; ?> </option>
+												<?php 	}
+														else
+														{
+												?>
+														<option value="<?php echo $nGRNO; ?>"> <?php echo $tFname . " " . $tLname ; ?> </option>
+											<?php												
+														}
+														
+													}
+												}
+												
+											
 											?> 
 											</select><br />	<label  class="control-label"> &nbsp; </label>
 
@@ -200,7 +240,7 @@ include '../../Model/dbStudent.php' ;
 											$iterator ++ ;
 										}
 									?>
-									<label >* To Remove Student Select Allocate</label>
+									<label style="font-weight:bold" >* To Remove Student Select Allocate</label>
 								</div>
 								
 

@@ -1,5 +1,5 @@
 <?php
-include '/schoolNew/Model/dbHostel.php';
+include 'c:\wamp\www\school\Model\dbHostel.php';
 
 $id 	= $_GET['id'];
 
@@ -52,11 +52,6 @@ else
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">

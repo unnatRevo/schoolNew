@@ -1,6 +1,7 @@
 <?php
 
-class dbStudent{
+class dbStudent
+{
 	function dbconnectModel()
 	{
 		$servername 	= "localhost";
@@ -13,7 +14,7 @@ class dbStudent{
 		return $conn;
 	}
 	
-	function getAllStudentData()
+	function getAllStudentData($id)
 	{
 		$conn = $this->dbconnectModel( ) ;
 
@@ -26,7 +27,28 @@ class dbStudent{
 					. " dBirthDate, "
 					. " bStaysAtHostel "
 				. " FROM "
-					. " tblStudent " ;
+					. " tblStudent " 
+				."WHERE"
+					." bGender = " . $id ;
+		
+		$result = mysqli_query( $conn, $qry ) ;
+		
+		return $result ;
+	}
+	function getAllStudentDatas()
+	{
+		$conn = $this->dbconnectModel( ) ;
+
+		$qry = " SELECT "
+					. " nGRNO, "
+					. " tFname, "
+					. " tMname, "
+					. " tLname, "
+					. " bGender, "
+					. " dBirthDate, "
+					. " bStaysAtHostel "
+				. " FROM "
+					. " tblStudent "  ;
 		
 		$result = mysqli_query( $conn, $qry ) ;
 		
@@ -133,10 +155,15 @@ class dbStudent{
 	{
 		$conn = $this->dbconnectModel( ) ;
 		$qry = " SELECT * FROM $tblName WHERE nGRNO = $nGRNO " ;
-		
-		$result = mysqli_query( $conn, $qry ) ;  
-		return mysqli_num_rows( $result ) ;
+		//$qry = "SELECT COUNT(nGRNO) from $tblName WHERE nGRNO = $nGRNO";
+		$result = mysqli_query( $conn, $qry ) ;
+		if ( $result === FALSE )
+		{
+			die(mysql_error());
+		}
 
+		return mysqli_num_rows( $result ) ;
+		//return $result;
 	}
 	
 	function insertData($tablename,$field,$valuesArray)
@@ -203,6 +230,8 @@ class dbStudent{
 		mysqli_close($conn);
 		
 	}
+
+
 
 	function getnGRNOFromStandard( $nStandardId ) 
 	{
@@ -284,10 +313,10 @@ class dbStudent{
 						. " SET "
 							. " isPresent = $forStatus , "
 							. " tSubjectName = '$tSubjectName' "
-						. " WHERE "
 							. " dDay = $atdDate "
-							. " AND nGRNO = $nGRNO "
-							. " AND nStandardId = $nStandardId " ;
+							. " nStandardId = $nStandardId "
+						. " WHERE "
+							. " nGRNO = $nGRNO ";
 
 			mysqli_query( $conn, $qry ) ;
 		}
@@ -335,7 +364,7 @@ class dbStudent{
 		echo "<br>$DOB";
 		echo "<br>$HostelStay";
 		echo "<br>$IsActive";
-		echo "<br>$Standard";
+		// echo "<br>$Standard";
 
 		// $toDate = date("Y-m-d",strtotime($DOB));
 
@@ -344,6 +373,19 @@ class dbStudent{
 		mysqli_query($conn,$qry);
 
 		echo "Data Inserted Succesfully";
+	}
+
+	function insertIntoStudentStandard($tablename , $nGRNO , $nStandardId)
+	{
+		$conn = $this->dbconnectModel();
+
+		//extract($values);
+
+		$qry = "INSERT INTO $tablename VALUES ( '',$nGRNO , $nStandardId )  ";
+
+		mysqli_query($conn,$qry);
+
+		echo "data inserted in student standard";
 	}
 
 	function studentViewSingle($id)
@@ -362,40 +404,32 @@ class dbStudent{
 		return $result;
 	}
 
-	// function editAnyData($tablename,$values,$id)
-	// {
-	// 	$conn = $this->dbconnectModel();
-
-	// 	extract($values);
-	// 	echo "$firstname, $middlename, $lastname, $sex, $dateOfBirth, $hostelStay, $isActive, $Stream";
-	// 	$qry = "UPDATE $tablename SET $firstname, $middlename, $lastname, $sex, $dateOfBirth, $hostelStay, $isActive, $Stream WHERE nGRNO = '$id'";
-		
-	// 	mysqli_query($conn,$qry);
-		
-	// 	mysqli_close($conn);
-		
-	// }
-
-	function editAnyData($tablename,$values,$id)
+	/*function editAnyData($tablename,$values,$id)
 	{
 		$conn = $this->dbconnectModel();
+
+		extract($values);
+		// echo "$firstname, $middlename, $lastname, $sex, $dateOfBirth, $hostelStay, $isActive, $Stream";
+		$qry = "UPDATE $tablename SET `tFname` = $firstname, `tMname`=$middlename,`tLname`= $lastname, `bGender`= $bGender, `dBirthDate`=$dateOfBirth, `bStaysAtHostel`=$hostelStay, `bIsActive`=$isactive, `btStreamGroup`= $stream' WHERE 'nGRNO' = $id";
 		
-		$qry = "UPDATE $tablename SET ".implode(" , ",$values)." WHERE nGRNO = $id";
+
 		
 		mysqli_query($conn,$qry);
 		
 		mysqli_close($conn);
 		
-	}
-	
-	function getSingleStudentView($id){
-		$conn = $this->dbconnectModel( ) ;
+	}*/
 
-		$qry = " SELECT * FROM tblstudent WHERE nGRNO = $id";
+	function editAnyData($tablename,$values,$id)
+	{
+		$conn = $this->dbconnectModel();
 		
-		$result = mysqli_query( $conn, $qry ) ;
+		$qry = " UPDATE $tablename SET ".implode(" , ",$values)." WHERE nGRNO = '$id' ";
+	
+		mysqli_query($conn,$qry);
 		
-		return $result ;
+		mysqli_close($conn);
+		
 	}
 
 	function getAllStudentView()
@@ -419,13 +453,25 @@ class dbStudent{
 		
 		return $result ;
 	}
-	
-	function studentStandard($id){
-		$conn = $this->dbconnectModel();
-		$qry = "SELECT nStandardId FROM tblstudentstandard WHERE nGRNO = $id";
-		$result = mysqli_query($conn, $qry);
-		return $result;
-	}
 
 }
+
+
+	// function checkDate( $atdDate )
+	// {
+	// 	$conn = $this->dbconnectModel( ) ;
+
+	// 	$toDate = strtotime( $atdDate ) ;
+
+	// 	$qry = " SELECT dDay FROM  "
+	// 			. " tblattendence "
+	// 			. " WHERE " 
+	// 			. " dDay = $toDate " ;
+
+	// 	$result = mysqli_query( $conn, $qry ) ;
+
+	// 	return mysqli_num_rows( $result ) ;
+
+	// }	
+
 ?>

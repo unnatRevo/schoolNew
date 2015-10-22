@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../../Model/dbStudent.php';
 ?>
 
@@ -17,26 +16,15 @@ include '../../Model/dbStudent.php';
 	<!-- end: Mobile Specific -->
 	
 	<!-- start: CSS -->
-	<link id="bootstrap-style" href="/schoolNew/Theme/css/bootstrap.min.css" rel="stylesheet">
-	<link id="bootstrap-style" href="/schoolNew/Theme/css/custom.css" rel="stylesheet">
-	<link href="/schoolNew/Theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link id="base-style" href="/schoolNew/Theme/css/style.css" rel="stylesheet">
-	<link id="base-style-responsive" href="/schoolNew/Theme/css/style-responsive.css" rel="stylesheet">
-	<link id="font-awesome" href="/schoolNew/Theme/css/font-awesome.css" rel="stylesheet">
-	<link id="font-awesomemin" href="/schoolNew/Theme/css/font-awesome.min.css" rel="stylesheet">
+	<link id="bootstrap-style" href="../../Theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../Theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link id="base-style" href="../../Theme/css/style.css" rel="stylesheet">
+	<link id="base-style-responsive" href="../../Theme/css/style-responsive.css" rel="stylesheet">
+	<link id="font-awesome" href="../../Theme/css/font-awesome.css" rel="stylesheet">
+	<link id="font-awesomemin" href="../../Theme/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	<!-- end: CSS -->
-	
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<link id="ie-style" href="css/ie.css" rel="stylesheet">
-	<![endif]-->
-	
-	<!--[if IE 9]>
-		<link id="ie9style" href="css/ie9.css" rel="stylesheet">
-	<![endif]-->
-	
+		
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="../../Theme/img/favicon.ico">
 	<!-- end: Favicon -->
@@ -44,12 +32,6 @@ include '../../Model/dbStudent.php';
 </head>
 
 <body>
-
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -60,35 +42,8 @@ include '../../Model/dbStudent.php';
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" href="index.html"><span>School</span></a>
-				<!-- start: Header Menu -->
-				<div class="nav-no-collapse header-nav">
-					<ul class="nav pull-right">
-					<!--start: Logout option-->
-						<li>
-							<a class="btn" href="../../Controller/users/userLogoutCon.php">
-								<i class="halflings-icon white off"></i>
-							</a>
-						</li>
-					<!--end: Logout option-->
-					
-						<!-- start: User Dropdown -->
-						<li class="dropdown">
-							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="halflings-icon white user"></i> Dennis Ji
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li class="dropdown-menu-title">
- 									<span>Account Settings</span>
-								</li>
-								<li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-								<li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
-							</ul>
-						</li>
-						<!-- end: User Dropdown -->
-					</ul>
-				</div>
-				<!-- end: Header Menu -->
+								
+				
 				
 			</div>
 		</div>
@@ -97,6 +52,7 @@ include '../../Model/dbStudent.php';
 	
 		<div class="container-fluid-full">
 		<div class="row-fluid">
+				
 			<!-- start: Main Menu -->
 
 			<?php
@@ -140,7 +96,7 @@ include '../../Model/dbStudent.php';
 					
 					<?php
 						$obj = new dbStudent;
-						$result = $obj->getAllStudentData();
+						$result = $obj->getAllStudentDatas();
 					?>
 					
 					
@@ -149,16 +105,16 @@ include '../../Model/dbStudent.php';
 						  <thead>
 							  <tr>
 								  <th style="text-align:center">Serial</th>
-								  <th style="text-align:right">GRNO</th>
+								  <th style="text-align:center">GRNO</th>
 								  <th style="text-align:left">F Name</th>
 								  <th style="text-align:left">M Name</th>
 								  <th style="text-align:left">L Name</th>
 								  <th style="text-align:center">Gender</th>
 								  <th style="text-align:center">Birth Date</th>
 								  <th style="text-align:center">Hostel Stay</th>
-								  <th style="text-align:center">Operations</th>
-								  <th style="text-align:center"></th>
-								  <th style="text-align:center"></th>
+								  <th style="text-align:center">View</th>
+								  <th style="text-align:center">Edit</th>
+								  <th style="text-align:center">Delete</th>
 							  </tr>
 						  </thead>
 							
@@ -169,11 +125,12 @@ include '../../Model/dbStudent.php';
 							{
 						?>
 							<tr>
-								<td style="text-align:right">
-									<?php echo $row [ 'nGRNO' ] ;?>
-								</td>
-								<td>
+								<td class="center" style="text-align:center">
 									<?php echo $i;?>
+								</td>
+								<td class="center" style="text-align:center">
+									<?php echo $row [ 'nGRNO' ] ;?>
+									
 								</td>
 								<td class="center">
 									<?php echo $row['tFname']; ?>
@@ -189,13 +146,13 @@ include '../../Model/dbStudent.php';
 										if ( $row['bGender'] == 1 )
 										{
 									?>
-											<font color="blue">M</font>
+											<b><font color="blue">M</font>
 									<?php
 										}
 										else
 										{
 									?>
-											<font color="magenta">F</font>
+											<b><font color="magenta">F</font>
 									<?php
 										}
 									?>
@@ -231,17 +188,17 @@ include '../../Model/dbStudent.php';
 								</td>
 								
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/reports/studentReport.php?id=<?php echo $row['nGRNO']; ?>">
+									<a href="studentView.php?id=<?php echo $row['nGRNO']; ?>"> 
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
 								</td>
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/students/studentEdit.php?id=<?php echo $row['nGRNO']; ?>">
+									 <a href="studentEdit.php?id=<?php echo $row['nGRNO']; ?>"> 
 										<font color="blue"><i class="fa fa-pencil-square-o"></i></font>
 									</a>
 								</td>
 								<td class="center" style="text-align:center">
-									<a href="/schoolNew/View/students/studentDelete.php?id=<?php echo $row['nGRNO']; ?>" onClick="return confirm('Are you sure to delete this data ?');">
+									 <a href="studentDelete.php?id=<?php echo $row['nGRNO']; ?>" onClick="return confirm('Are you sure to delete this data ?');"> 
 										<font color="red"><i class="fa fa-trash-o"></i></font> 
 									</a>
 								</td>

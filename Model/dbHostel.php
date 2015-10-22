@@ -14,10 +14,7 @@ class dbHostel
 		
 		return $conn;
 	}
-	function addDataModel()
-	{
-		
-	}
+	
 
 	function getDataHostelModel1()
 	{
@@ -173,25 +170,59 @@ class dbHostel
 	}
 	
 	
-	function insertAnyData($tablename,$field,$valuesArray)
+	function insertAnyData($tablename,$valuesArray)
 	{
 		$conn = $this->dbconnectModel();
-		
-		$qry = "INSERT INTO "
+	
+		extract($valuesArray);
+		echo "<br>$hostelname";
+		echo "<br>$hostelfor";
+		echo "<br>$hosteladdress";
+		echo "<br>$hostelcapacity";
+		echo "<br>$nMaxCapacity";
+
+		//print_r($valuesArray);	
+	/*	$qry = "INSERT INTO "
 					. $tablename 
 					. " VALUES "
 						. " ( ' " 
 							. implode ( "','", $valuesArray ) 
-						. " ' ) " ;
+						. " ' ) " ;*/
+		
+		 $qry = " INSERT INTO $tablename VALUES ( '' , '$hostelname' , $hostelfor , '$hosteladdress' , $hostelcapacity , $nMaxCapacity  ) ";
+		
+
 		mysqli_query($conn,$qry);
 		
 		mysqli_close($conn);
 		
 		echo "Data Inserted successfully";
-		/*
-		print_r($field);
-		print_r($valuesArray);*/
+		
 	}
+
+
+	function insertData($tablename,$field,$valuesArray)
+	{
+		$conn = $this->dbconnectModel();
+		
+		$qry = "INSERT INTO "
+					. $tablename 
+					. " ( "
+						. implode ( ",", $field )
+					." ) "
+					. " VALUES "
+						. " ( ' " 
+							. implode ( "','", $valuesArray ) 
+						. " ' ) " ;
+
+		mysqli_query($conn,$qry);
+		
+		mysqli_close($conn);
+		
+		echo "Data Inserted successfully";
+		
+	}
+
 	function hostelDelete($id)
 	{
 		$conn = $this->dbconnectModel();
@@ -199,7 +230,7 @@ class dbHostel
 		$qry = "DELETE FROM "
 					. " tblhostel "
 				. " WHERE "
-					. " nHostelId = '$id' " ;
+					. " nHostelId = " . $id;
 	
 		mysqli_query($conn,$qry);
 		

@@ -1,6 +1,3 @@
-<?php
-	session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +29,6 @@
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -104,43 +96,47 @@
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Student Name</label>
 								<div class="controls">
-								  <input class="input-medium focused" name="firstname" placeholder="First Name" type="text" autofocus="true" required="true">
-								  <input class="input-medium" name="middlename" placeholder="Middle Name" required="true" type="text">
-								  <input class="input-medium" name="lastname" placeholder="Last Name" type="text" required="true">
+								  <input class="input-xlarge focused" name="tFname" placeholder="First Name" type="text">
+								  <input class="input-xlarge focused" name="tMname" placeholder="Middle Name" type="text">
+								  <input class="input-xlarge focused" name="tLname" placeholder="Last Name" type="text">
 								</div>
 							  </div>
 							   <div class="control-group">
 								<label class="control-label">Gender</label>
 								<div class="controls">
 								  <label class="radio">
-									<input type="radio" name="hostelfor" value="1" checked="">
+									<input type="radio" name="bGender" value="1" checked="">
 									Boy
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="hostelfor" value="0">
+									<input type="radio" name="bGender" value="0">
 									Girl
 								  </label>
 								</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Date Of Birth</label>  
-									 <input type="date" required="true" name="dateofbirth" value="<?php 
-									 	$dt = date('Y-m-d');
-									 	echo $dt;
-									 ?>" />
+									 <input type="date" name="dBirthDate" value="<?php echo date('Y-m-d'); ?>" />
 								</div>
+								
+								<div class="control-group">
+									<label class="control-label">Date Of Admission</label>  
+									 <input type="date" name="dAdmissionDate" value="<?php echo date('Y-m-d'); ?>" />
+								</div>
+								
+
 								<div class="control-group hidden-phone">
 									<label class="control-label">Hostel Stay</label>
 									<div class="controls">
 										<!-- <textarea name="hosteladdress" rows="2"></textarea> -->
 									<label class="radio">
-									<input type="radio" name="hostelstay" value="1" checked="">
+									<input type="radio" name="bStaysAtHostel" value="1" checked="">
 									Yes
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="hostelstay" value="0">
+									<input type="radio" name="bStaysAtHostel" value="0">
 									No
 								  </label>	
 									</div>
@@ -150,12 +146,12 @@
 									<div class="controls">
 										<!-- <input type="number" name="hostelcapacity" min="1" /> -->
 										<label class="radio">
-									<input type="radio" name="isactive" value="1" checked="">
+									<input type="radio" name="bIsActive" value="1" checked="">
 									Yes
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="isactive" value="0">
+									<input type="radio" name="bIsActive" value="0">
 									No
 								  </label>
 									</div>
@@ -166,12 +162,12 @@
 									<div class="controls">
 										<!-- <input type="number" name="hostelcapacity" min="1" /> -->
 										<label class="radio">
-									<input type="radio" name="stream" value="11" checked="">
+									<input type="radio" name="btStreamGroup" value="2" checked="">
 									11
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="stream" value="12">
+									<input type="radio" name="btStreamGroup" value="3">
 									12
 								  </label>
 									</div>

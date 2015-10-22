@@ -22,5 +22,5 @@ include '../../Model/dbCountry.php';
 		$obj = new dbCountry;
 		$obj->editData ( 'tblCountries', $finalArray, $id ) ;
 		
-		header('location: /schoolNew/View/countries/countryList.php');
+		header('location: /school/View/countries/countryList.php');
 ?>

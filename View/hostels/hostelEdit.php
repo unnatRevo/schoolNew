@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include '../../Model/dbHostel.php';
 
 $id = $_GET['id'];
@@ -44,11 +44,6 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -161,6 +156,11 @@ $row = mysqli_fetch_assoc($result);
 									<label class="control-label">Capacity</label>
 									<div class="controls">
 										<input type="number" name="nHostelCapacity" min="1" value="<?php echo $row['nHostelCapacity']; ?>"/>
+									</div>
+									<div class="control-group hidden-phone">
+									<label class="control-label">Room Capacity</label>
+									<div class="controls">
+										<input type="number" name="nMaxCapacity" min="1" value="<?php echo $row['nMaxCapacity']; ?>"/>
 									</div>
 								</div>
 								<input type="hidden" name="id" value="<?php echo $row['nHostelId']; ?>" >

@@ -1,13 +1,11 @@
 <?php
-session_start();
-include '../../Model/dbHostel.php';
-if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
+include '../../Model/dbStudent.php';
+
 $id = $_GET['id'];
 
-$obj = new dbHostel();
-$obj->hostelDelete($id);
+$obj = new dbStudent();
+$obj->deleteStudent($id);
 
 header('location: /schoolNew/View/students/studentList.php');
+
 ?>

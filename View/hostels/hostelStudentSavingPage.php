@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 include '../../Model/dbHostel.php' ;
 include '../../Model/dbStudent.php' ;
 
@@ -8,21 +8,26 @@ include '../../Model/dbStudent.php' ;
 $obj = new dbStudent ;
 
 echo $_GET[ 'nHostelId' ] ;
-echo $_GET[ 'nRoomId' ] ;
+echo $_GET[ 'nRoomId' ];// . "<script> alert( ".$_GET['nRoomId']." ) ; </script>";
 echo $_GET[ 'total' ] ;
-
+// echo "<script> alert( '".$bb."' ) ; </script>";
+	
 $conn = $obj->dbconnectModel( ) ;
+
+					
+		
 
 
 $updateAllocationQry = " UPDATE "
-							. " tblstudentroomallocation "
+							. " tblstudentroomallocation s"
 						. " SET "
 							. " isAllocated = 0 "
 						. " WHERE "
 							. " nHostelId = " . $_GET[ 'nHostelId' ]
 						. " AND "
 							. " nRoomId = " . $_GET[ 'nRoomId' ] ;
-							
+//$updateInStudent = "UPDATE tblstudent SET bStaysAtHostel = 0 WHERE nGRNO = $_GET['nGRNO']";
+
 	mysqli_query( $conn, $updateAllocationQry ) ;
 	
 	$iterator = 1;
@@ -31,13 +36,15 @@ $updateAllocationQry = " UPDATE "
 		
 		if ( $obj->checkStudentExistence("tblstudentroomallocation", $_GET[ $_GET[ 'nRoomId' ].$iterator ] ) > 0  )
 		{
+
 			?>
 				<script>
-					alert( "1" ) ;
+					alert( "in if=".$iterator ) ;
+
 				</script>
 			<?php
 			$updateAllocationQry = " UPDATE "
-										. " tblstudentroomallocation "
+										. " tblstudentroomallocation  "
 									. " SET "
 										. " isAllocated = 1 "
 									. " WHERE "
@@ -66,7 +73,7 @@ $updateAllocationQry = " UPDATE "
 				?>
 
 				<script>
-					alert( "2" ) ;
+					alert( "in else=".$iterator ) ;
 				</script>
 			<br />
 				<?php
@@ -76,5 +83,5 @@ $updateAllocationQry = " UPDATE "
 		$iterator++ ;
 	}
 	
-	header('location: ../../View/hostels/hostelStudentEntry.php');
+	header('location: /schoolNew/View/hostels/hostelStudentEntry.php');
 ?>

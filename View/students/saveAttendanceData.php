@@ -11,7 +11,7 @@
 	$grChecked = '' ;
 
 
-	
+		
 
 	if ( isset( $_POST[ 'SubjectName' ] ) != null  ) {
 		$tStandardName[] = $_POST[ 'SubjectName' ];
@@ -21,7 +21,7 @@
 		foreach ($_POST['SubjectName'] as $tSubjectName) {
 			# code...
 			print_r($tSubjectName) ;
-
+			echo $standardName;
 		}
 		
 	}
@@ -130,4 +130,5 @@
 			}
 		}
 	}
+	header('location: /schoolNew/View/students/studentAttendance.php');
 ?>

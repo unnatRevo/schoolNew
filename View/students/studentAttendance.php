@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 	ini_set('display_error', true) ;
 	error_reporting(E_ALL | E_NOTICE) ;
@@ -104,11 +103,6 @@ function ifAnyChange( checkAllForm )
 
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -191,7 +185,7 @@ function ifAnyChange( checkAllForm )
 					</td>
 					<td>
 					<label class="radio">
-						<input type="radio" name="standard" value="12" >12
+						<input type="radio" name="standard" value="12">12
 					</label>
 				</td>
 					<td width=10/>
@@ -223,7 +217,8 @@ function ifAnyChange( checkAllForm )
 								<td width=100 >
 									<b> Date : </b>
 								</td>
-								<td> <?php echo $_POST[ 'currentdate' ] ; ?> </td>
+								<!-- <td> <?php echo $_POST[ 'currentdate' ] ; ?> </td> -->
+								<td> <?php	echo date_format (  date_create ($_POST['currentdate']), 'd-m-Y' ) ; ?></td>
 							</tr>
 						</div>
 

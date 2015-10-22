@@ -40,6 +40,17 @@ class dbSubject
 		return $result;
 	}
 
+	function subjectDelete($nSubjectId)
+	{
+		$conn = $this->dbconnectModel( ) ;
+
+		$qry  = " DELETE FROM tblsubject where nSubjectId = $nSubjectId " ;
+
+		mysqli_query($conn , $qry);
+		
+		echo "Data Deleted";
+	}
+
 	function insertSubject ( $tSubjectName, $nForStandard )
 	{
 		$conn = $this->dbconnectModel();
@@ -81,19 +92,19 @@ class dbSubject
 		echo "Data Inserted successfully";
 		
 	}
-	function subjectDelete($id)
-	{
-		$conn = $this->dbconnectModel();
+	// function subjectDelete($id)
+	// {
+	// 	$conn = $this->dbconnectModel();
 		
-		$qry = "DELETE FROM "
-					. " tblhostel "
-				. " WHERE "
-					. " nHostelId = '$id' " ;
+	// 	$qry = "DELETE FROM "
+	// 				. " tblhostel "
+	// 			. " WHERE "
+	// 				. " nHostelId = '$id' " ;
 	
-		mysqli_query($conn,$qry);
+	// 	mysqli_query($conn,$qry);
 		
-		echo "Data Deleted";
-	}
+	// 	echo "Data Deleted";
+	// }
 	function getSubject($id)
 	{
 		$conn = $this->dbconnectModel();

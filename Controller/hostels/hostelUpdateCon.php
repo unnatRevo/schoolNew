@@ -20,7 +20,7 @@ include '../../Model/dbHostel.php';
 		}
 		
 		$obj = new dbHostel;
-		$obj->editAnyData ( 'tblhostel', $finalArray, $id ) ;
-		
+		$obj->editAnyData( 'tblhostel', $finalArray, $id ) ;
+
 		header('location: /schoolNew/View/hostels/hostelList.php');
 ?>

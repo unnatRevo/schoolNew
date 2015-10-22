@@ -17,5 +17,5 @@ include '../../Model/dbCountry.php';
 		$obj = new dbCountry;
 		$obj->insertData('tblCountries',$mykey,$myvalue);
 		
-		header('location: /schoolNew/View/countries/countryList.php');
+		header('location: /school/View/countries/countryList.php');
 ?>

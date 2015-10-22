@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../../Model/dbHostel.php';
 
 $id 	= $_GET['id'];
@@ -53,11 +52,6 @@ else
 </head>
 
 <body>
-<?php
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
-?>
 		<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -110,7 +104,12 @@ else
 					<a href="#">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">Hostel View</a></li>
+				<li><a href="hostelList.php">Hostel List</a>
+					<i class="icon-angle-right"></i>
+				</li>
+				<li>
+					<a href="#">Hostel View</a>
+				</li>
 			</ul>		
 				
 			
@@ -140,6 +139,8 @@ else
 								  <th style="text-align:center">Hostel For</th>
 								  <th style="text-align:center">Hostel Address</th>
 								  <th style="text-align:center">Hostel Capacity</th>
+								  <th style="text-align:center">Room Capacity</th>
+								  <th style="text-align:center">Operation</th>
 							  </tr>
 						  </thead>
 								<tr>
@@ -148,6 +149,12 @@ else
 									<td style="text-align:center" ><?php echo $for ?></td>
 									<td style="text-align:center"><?php echo $row['tHostelAddress']; ?></td>
 									<td style="text-align:center"><?php echo $row['nHostelCapacity']; ?></td>
+									<td style="text-align:center"><?php echo $row['nMaxCapacity']; ?></td>
+									<td style="text-align:center"> 
+									<a href='hostelRoomEntry.php?id=<?PHP echo $id; ?>&cap=<?PHP echo $row['nMaxCapacity']; ?>' >
+										<input type="button" name="Add Rooms" value="Add Rooms" /> 
+									</a>
+									</td>
 								</tr>
 						  <tbody>
 						

@@ -1,5 +1,4 @@
 <?php
-session_start();
 ini_set('display_error', true) ;
 error_reporting(E_ALL | E_NOTICE) ;
 
@@ -7,9 +6,6 @@ include '../../Model/dbHostel.php' ;
 include '../../Model/dbStudent.php' ;
 //include 'select.php' ;
 
-	if ( !isset($_SESSION['username']) ) {
-		header('location: /schoolNew/View/user/login.php');
-	}
 ?>
 
 <html lang="en">
@@ -183,8 +179,10 @@ function fetch_r( hostelList, standard )
 					
 					<!--	<input type="button" onClick="fetch_r( 'H1', 11 )" value="TEST"></input> -->
 					
-						<select name="hostelList" >
+					<div class="controls">
+						<select name="hostelList" data-rel="chosen">
 						<option value="0" selected="true">--Select Hostel--</option>
+					
 					
 						<?php
 							$hostelName = '';
@@ -226,11 +224,12 @@ function fetch_r( hostelList, standard )
 					<label class="radio">
 						<input type="radio" name="standard" value="12" >12
 					</label> -->
+
 					&nbsp;&nbsp;&nbsp;	<input type="submit" name="getDetails" value="Go !" margin="100px" onClick="fetch_r(hostelList.value,standard.value);" />
 					
 					<center>
 					<div >
-							<u><b>HOSTEL NAME : <?php  echo $hostelName?></b></u>
+							<u><b>HOSTEL NAME : <?php  echo $hostelName ?></b></u>
 					</div>
 					</center>
 					<?php
@@ -269,7 +268,7 @@ function fetch_r( hostelList, standard )
 							$obj = new dbStudent;
 							$allRoom = $hObj->getRoomDetails($hostelName);
 							//$studentNames = $Obj->displayHostelStudentEntry($hostelName);
-							$studentNames = $obj->getAllStudentData();
+							$studentNames = $obj->getAllStudentDatas();
 						
 							while($roomDetails = mysqli_fetch_assoc( $allRoom ) )
 							{	
@@ -326,7 +325,7 @@ function fetch_r( hostelList, standard )
 												.'&nRoomId=' 
 													. $nRoomId
 												. '&total='
-													. $nMaxCapacity;
+													. $nMaxCapacity ;
 									
 									$count = 1;
 									while ( $dataAnswer = mysqli_fetch_assoc($studentAllocationData) )
