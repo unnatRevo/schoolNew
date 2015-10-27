@@ -14,21 +14,36 @@ echo $_GET[ 'total' ] ;
 	
 $conn = $obj->dbconnectModel( ) ;
 
-					
+/*$results = $newObj->getAllFromStudentRoomAllocation();	
+$row = mysqli_fetch_assoc($results);*/
 		
 
 
 $updateAllocationQry = " UPDATE "
-							. " tblstudentroomallocation s"
+							. " tblstudentroomallocation "
 						. " SET "
 							. " isAllocated = 0 "
 						. " WHERE "
 							. " nHostelId = " . $_GET[ 'nHostelId' ]
 						. " AND "
 							. " nRoomId = " . $_GET[ 'nRoomId' ] ;
-//$updateInStudent = "UPDATE tblstudent SET bStaysAtHostel = 0 WHERE nGRNO = $_GET['nGRNO']";
 
-	mysqli_query( $conn, $updateAllocationQry ) ;
+						mysqli_query( $conn, $updateAllocationQry ) ;
+
+$updateInStudent = "UPDATE "
+						. " tblstudent " 
+					. " SET "
+						. " bStaysAtHostel = 0 "
+					. " WHERE "
+						. " nGRNO IN ( "
+						. " SELECT "
+							. " nGRNO "
+						. " FROM "
+							. " tblstudentroomallocation "
+						." WHERE "
+							." isAllocated = 0 )";
+			
+				mysqli_query( $conn, $updateInStudent ) ;
 	
 	$iterator = 1;
 	while ( $iterator<=$_GET[ 'total' ] )
@@ -51,7 +66,15 @@ $updateAllocationQry = " UPDATE "
 										. "nGRNO = " . $_GET[ $_GET[ 'nRoomId' ].$iterator ] ;
 										
 			mysqli_query( $conn, $updateAllocationQry ) ;
+
+			$updateInStudent = "UPDATE "
+									. " tblstudent "
+								." SET "
+									. "bStaysAtHostel = 1 "
+								." Where "
+									. " nGRNO = " . $_GET[ $_GET[ 'nRoomId' ].$iterator ];
 			
+			mysqli_query($conn , $updateInStudent);
 		}
 		else
 		{
@@ -78,6 +101,15 @@ $updateAllocationQry = " UPDATE "
 			<br />
 				<?php
 			mysqli_query( $conn, $insertQry ) ;
+
+			$insertInStudent = "INSERT INTO "
+								. " tblstudent "
+									. " ( bStaysAtHostel ) "
+								. " VALUES ( "
+									. "  1 ) "
+								. " WHERE "
+									. " nGRNO = " .$_GET[ $_GET[ 'nRoomId' ].$iterator ];
+			mysqli_query($conn , $insertInStudent);
 		}
 
 		$iterator++ ;

@@ -29,19 +29,7 @@
 </head>
 
 <body>
-		<!-- start: Header -->
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="index.html"><span>School</span></a>
-			</div>
-		</div>
-	</div>
+		
 	<!-- start: Header -->
 	
 		<div class="container-fluid-full">
@@ -50,7 +38,7 @@
 			<!-- start: Main Menu -->
 
 			<?php
-				include '../mainMenu.html';
+				include '../../mainMenu.html';
 			?>
 
 			<!--
@@ -75,11 +63,17 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="#">Home</a> 
+					<a href="../dashboard.php">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
+				<li>
+					<a href="studentList.php">Student List</a>
+					<i class="icon-angle-right"></i>
+				</li>	
+
 				<li><a href="#">Add Student</a></li>
-			</ul>		
+			</ul>	
+
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
@@ -126,21 +120,7 @@
 								</div>
 								
 
-								<div class="control-group hidden-phone">
-									<label class="control-label">Hostel Stay</label>
-									<div class="controls">
-										<!-- <textarea name="hosteladdress" rows="2"></textarea> -->
-									<label class="radio">
-									<input type="radio" name="bStaysAtHostel" value="1" checked="">
-									Yes
-								  </label>
-								  <div style="clear:both"></div>
-								  <label class="radio">
-									<input type="radio" name="bStaysAtHostel" value="0">
-									No
-								  </label>	
-									</div>
-								</div>
+						
 								<div class="control-group hidden-phone">
 									<label class="control-label">Active </label>
 									<div class="controls">
@@ -162,12 +142,12 @@
 									<div class="controls">
 										<!-- <input type="number" name="hostelcapacity" min="1" /> -->
 										<label class="radio">
-									<input type="radio" name="btStreamGroup" value="2" checked="">
+									<input type="radio" name="btStreamGroup" value="11" checked="">
 									11
 								  </label>
 								  <div style="clear:both"></div>
 								  <label class="radio">
-									<input type="radio" name="btStreamGroup" value="3">
+									<input type="radio" name="btStreamGroup" value="12">
 									12
 								  </label>
 									</div>
@@ -202,7 +182,7 @@
 	<footer>
 
 		<p>
-			<span style="text-align:left;float:left">&copy; 2015 School Demo</span>
+			<span style="text-align:left;float:left">&copy; 2015 School</span>
 		</p>
 
 	</footer>

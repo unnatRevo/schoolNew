@@ -110,6 +110,13 @@ class dbStudent
 
 	}
 
+	function getAllFromStudentRoomAllocation()
+	{
+		$conn = $this->dbconnectModel( ) ;
+		$qry = "SELECT * FROM tblstudentroomallocation";
+		return mysqli_query($conn,$qry);
+	}
+
 	// author : AAKASH
 	function fetchDataForAllocation( $nHostelId, $nRoomId )
 	{

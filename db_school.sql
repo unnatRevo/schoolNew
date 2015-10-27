@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2015 at 07:51 PM
+-- Generation Time: Oct 27, 2015 at 12:10 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `tblattendence` (
   `isPresent` tinyint(1) NOT NULL,
   `tSubjectName` text NOT NULL,
   PRIMARY KEY (`nSrNo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=118 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=154 ;
 
 --
 -- Dumping data for table `tblattendence`
@@ -63,7 +63,35 @@ CREATE TABLE IF NOT EXISTS `tblattendence` (
 INSERT INTO `tblattendence` (`nSrNo`, `dDay`, `nGRNO`, `nStandardId`, `isPresent`, `tSubjectName`) VALUES
 (115, '1442354400', 3, 3, 1, 'Chemistry_12 | Biology_12'),
 (116, '1442354400', 4, 3, 1, 'Chemistry_12 | Biology_12'),
-(117, '1442354400', 5, 3, 1, 'Chemistry_12 | Biology_12');
+(117, '1442354400', 5, 3, 1, 'Chemistry_12 | Biology_12'),
+(118, '1442872800', 3, 3, 1, 'Physics_12 | Biology_12'),
+(119, '1442872800', 4, 3, 1, 'Physics_12 | Biology_12'),
+(120, '1442872800', 5, 3, 1, 'Physics_12 | Biology_12'),
+(129, '1445378400', 3, 3, 0, ''),
+(130, '1445378400', 5, 3, 1, ''),
+(131, '1445378400', 1, 2, 0, 'Physics_11'),
+(132, '1445378400', 2, 2, 0, 'Physics_11'),
+(133, '1445378400', 4, 2, 1, 'Physics_11'),
+(134, '1445551200', 3, 3, 0, 'Physics_12 | Chemistry_12 | Biology_12'),
+(135, '1445551200', 5, 3, 1, 'Physics_12 | Chemistry_12 | Biology_12'),
+(136, '1445551200', 17, 3, 1, 'Physics_12 | Chemistry_12 | Biology_12'),
+(137, '1445464800', 1, 2, 1, 'Physics_11 | Chemistry_11 | Biology_11'),
+(138, '1445464800', 2, 2, 1, 'Physics_11 | Chemistry_11 | Biology_11'),
+(139, '1445464800', 4, 2, 1, 'Physics_11 | Chemistry_11 | Biology_11'),
+(140, '1445464800', 16, 2, 1, 'Physics_11 | Chemistry_11 | Biology_11'),
+(141, '1445464800', 3, 3, 0, ''),
+(142, '1445464800', 5, 3, 1, ''),
+(143, '1445464800', 17, 3, 1, ''),
+(144, '1445464800', 3, 12, 1, 'Economics | Account | Physics_12 | Chemistry_12 | Biology_12'),
+(145, '1445464800', 5, 12, 1, 'Economics | Account | Physics_12 | Chemistry_12 | Biology_12'),
+(146, '1445464800', 17, 12, 1, 'Economics | Account | Physics_12 | Chemistry_12 | Biology_12'),
+(147, '1445464800', 1, 11, 1, 'Physics_11 | Chemistry_11 | Statastics | Biology_11'),
+(148, '1445464800', 2, 11, 1, 'Physics_11 | Chemistry_11 | Statastics | Biology_11'),
+(149, '1445464800', 4, 11, 1, 'Physics_11 | Chemistry_11 | Statastics | Biology_11'),
+(150, '1445464800', 16, 11, 1, 'Physics_11 | Chemistry_11 | Statastics | Biology_11'),
+(151, '1445551200', 3, 12, 0, 'Economics | Physics_12'),
+(152, '1445551200', 5, 12, 1, 'Economics | Physics_12'),
+(153, '1445551200', 17, 12, 1, 'Economics | Physics_12');
 
 -- --------------------------------------------------------
 
@@ -207,30 +235,28 @@ CREATE TABLE IF NOT EXISTS `tblfees` (
 --
 
 CREATE TABLE IF NOT EXISTS `tblhostel` (
-  `nHostelId` int(2) NOT NULL,
+  `nHostelId` int(2) NOT NULL AUTO_INCREMENT,
   `tHostelName` text NOT NULL,
   `bHostelFor` tinyint(1) NOT NULL,
   `tHostelAddress` text NOT NULL,
   `nHostelCapacity` int(4) NOT NULL,
+  `nMaxCapacity` int(2) NOT NULL,
   PRIMARY KEY (`nHostelId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `tblhostel`
 --
 
-INSERT INTO `tblhostel` (`nHostelId`, `tHostelName`, `bHostelFor`, `tHostelAddress`, `nHostelCapacity`) VALUES
-(1, 'H1', 1, 'ADD1', 100),
-(2, 'H2', 0, 'ADD2', 200),
-(3, 'H3', 0, 'ADDRESS ', 5),
-(4, 'H4', 0, 'ADDRESS', 0),
-(5, 'H5', 0, 'ADDRESS', 0),
-(6, 'H6', 0, 'ADDRESS', 0),
-(7, 'H7', 0, 'ADDRESS', 0),
-(8, 'H8', 0, 'ADDRESS', 0),
-(9, 'H9', 0, 'ADDRESS', 0),
-(10, 'H10', 0, 'ADDRESS', 0),
-(11, 'H11', 0, 'ADDRESS', 0);
+INSERT INTO `tblhostel` (`nHostelId`, `tHostelName`, `bHostelFor`, `tHostelAddress`, `nHostelCapacity`, `nMaxCapacity`) VALUES
+(2, 'H221', 1, 'ADD2      ', 100, 4),
+(3, 'H3', 1, 'ADDRESS  ', 5, 0),
+(4, 'H4', 0, 'ADDRESS', 0, 0),
+(5, 'H5', 0, 'ADDRESS', 0, 0),
+(7, 'H7', 0, 'ADDRESS', 0, 0),
+(10, 'H10', 0, 'ADDRESS', 0, 0),
+(12, 'H12', 1, 'add ', 122, 0),
+(19, 'H13', 1, 'add13', 10, 4);
 
 -- --------------------------------------------------------
 
@@ -246,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `tblhostelrooms` (
   `nMaxCapacity` int(2) NOT NULL,
   PRIMARY KEY (`nRoomId`),
   UNIQUE KEY `nHostelId` (`nHostelId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `tblhostelrooms`
@@ -255,7 +281,10 @@ CREATE TABLE IF NOT EXISTS `tblhostelrooms` (
 INSERT INTO `tblhostelrooms` (`nRoomId`, `tRoomNo`, `nFloorNo`, `nHostelId`, `nMaxCapacity`) VALUES
 (1, '1', 1, 1, 4),
 (2, '2', 2, 2, 4),
-(4, 'A101', 1, 4, 5);
+(4, 'A101', 1, 4, 5),
+(9, '3', 3, 3, 3),
+(11, ' 1', 1, 19, 4),
+(12, ' 3', 2, 12, 3);
 
 -- --------------------------------------------------------
 
@@ -276,8 +305,8 @@ CREATE TABLE IF NOT EXISTS `tblstandard` (
 
 INSERT INTO `tblstandard` (`nStandardId`, `tStandardName`, `bIsActive`) VALUES
 (1, '10', 1),
-(2, '11', 1),
-(3, '12', 1);
+(11, '11', 1),
+(12, '12', 1);
 
 -- --------------------------------------------------------
 
@@ -307,30 +336,29 @@ INSERT INTO `tblstate` (`nStateId`, `tStateName`, `nCountryId`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tblstudent` (
-  `nGRNO` int(5) NOT NULL,
-  `nEnrollmentNo` int(15) NOT NULL,
+  `nGRNO` int(5) NOT NULL AUTO_INCREMENT,
+  `nEnrollmentNo` int(15) DEFAULT NULL,
   `tFname` text NOT NULL,
   `tMname` text NOT NULL,
   `tLname` text NOT NULL,
   `bGender` tinyint(1) NOT NULL,
   `dBirthDate` date NOT NULL,
-  `dAdmissionDate` date NOT NULL,
+  `dAdmissionDate` date DEFAULT NULL,
   `bStaysAtHostel` tinyint(1) NOT NULL,
   `bIsActive` tinyint(1) NOT NULL,
-  `btStreamGroup` bit(1) NOT NULL,
+  `btStreamGroup` int(1) NOT NULL,
   PRIMARY KEY (`nGRNO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `tblstudent`
 --
 
 INSERT INTO `tblstudent` (`nGRNO`, `nEnrollmentNo`, `tFname`, `tMname`, `tLname`, `bGender`, `dBirthDate`, `dAdmissionDate`, `bStaysAtHostel`, `bIsActive`, `btStreamGroup`) VALUES
-(1, 0, 'Jinkal', 'N', 'Panchal', 1, '1990-04-18', '0000-00-00', 1, 1, b'0'),
-(2, 0, 'Sunil', 'G', 'Shreepal', 1, '1991-02-15', '0000-00-00', 0, 1, b'0'),
-(3, 0, 'Yusuf', 'M', 'Kapasi', 1, '1993-02-18', '0000-00-00', 1, 1, b'0'),
-(4, 0, 'Unnat', 'P', 'Pandya', 1, '1993-03-28', '0000-00-00', 1, 1, b'0'),
-(5, 0, 'Aakash', 'J', 'Kodwani', 1, '1992-05-30', '0000-00-00', 1, 1, b'0');
+(4, 0, 'Unnat', 'P', 'Pandya', 1, '1993-03-28', '2015-10-20', 1, 1, 11),
+(5, 0, 'Aakash', 'J', 'Kodwani', 1, '1992-05-30', '0000-00-00', 1, 1, 12),
+(16, 0, 'Salins', 'R', 'Christian', 1, '1991-05-03', '0000-00-00', 1, 1, 11),
+(17, 0, 'Ishita', 'M', 'Patel', 0, '1993-06-17', '2015-10-20', 1, 1, 12);
 
 -- --------------------------------------------------------
 
@@ -434,16 +462,29 @@ CREATE TABLE IF NOT EXISTS `tblstudentroomallocation` (
   `nGRNO` int(5) NOT NULL,
   `isAllocated` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`nSrNo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `tblstudentroomallocation`
 --
 
 INSERT INTO `tblstudentroomallocation` (`nSrNo`, `nHostelId`, `nRoomId`, `nGRNO`, `isAllocated`) VALUES
-(5, 1, 1, 3, 1),
-(6, 1, 1, 4, 1),
-(7, 1, 1, 5, 1);
+(9, 2, 2, 2, 0),
+(10, 2, 2, 1, 0),
+(11, 2, 2, 6, 0),
+(12, 2, 2, 4, 1),
+(13, 2, 2, 5, 1),
+(14, 2, 2, 16, 1),
+(16, 4, 4, 17, 1),
+(19, 2, 2, 59, 0),
+(20, 2, 2, 60, 0),
+(21, 2, 2, 18, 0),
+(22, 2, 2, 19, 0),
+(23, 2, 2, 20, 0),
+(24, 2, 2, 21, 0),
+(25, 2, 2, 22, 0),
+(26, 2, 2, 23, 0),
+(27, 2, 2, 24, 1);
 
 -- --------------------------------------------------------
 
@@ -456,18 +497,20 @@ CREATE TABLE IF NOT EXISTS `tblstudentstandard` (
   `nGRNO` int(3) NOT NULL,
   `nStandardId` int(3) NOT NULL,
   PRIMARY KEY (`nSrNo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `tblstudentstandard`
 --
 
 INSERT INTO `tblstudentstandard` (`nSrNo`, `nGRNO`, `nStandardId`) VALUES
-(1, 1, 2),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 3),
-(5, 5, 3);
+(1, 1, 11),
+(2, 2, 11),
+(3, 3, 12),
+(4, 4, 11),
+(5, 5, 12),
+(16, 17, 12),
+(17, 16, 11);
 
 -- --------------------------------------------------------
 
@@ -489,16 +532,56 @@ CREATE TABLE IF NOT EXISTS `tblsubject` (
 --
 
 INSERT INTO `tblsubject` (`nSubjectId`, `tSubjectName`, `nForStandard`, `bIsActive`) VALUES
-(1, 'Maths', 1, 1),
-(2, 'Social Studies', 1, 1),
+(1, 'Economics', 12, 1),
+(2, 'Account', 12, 1),
 (3, 'Physics_11', 11, 1),
 (4, 'Physics_12', 12, 1),
 (5, 'Chemistry_11', 11, 1),
 (6, 'Chemistry_12', 12, 1),
-(7, 'English', 1, 1),
-(8, 'Gujarati', 1, 1),
+(8, 'Statastics', 11, 1),
 (9, 'Biology_11', 11, 1),
 (10, 'Biology_12', 12, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbluserdetails`
+--
+
+CREATE TABLE IF NOT EXISTS `tbluserdetails` (
+  `tUsername` varchar(32) NOT NULL,
+  `tPassword` varchar(32) NOT NULL,
+  `tFirstName` varchar(30) NOT NULL,
+  `tLastName` varchar(30) NOT NULL,
+  `tUserType` int(1) NOT NULL,
+  PRIMARY KEY (`tUsername`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbluserdetails`
+--
+
+INSERT INTO `tbluserdetails` (`tUsername`, `tPassword`, `tFirstName`, `tLastName`, `tUserType`) VALUES
+(' admin', 'admin', 'admin', 'admin', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbluserlogin`
+--
+
+CREATE TABLE IF NOT EXISTS `tbluserlogin` (
+  `tUsername` varchar(32) NOT NULL,
+  `tPassword` varchar(32) NOT NULL,
+  `tUserType` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbluserlogin`
+--
+
+INSERT INTO `tbluserlogin` (`tUsername`, `tPassword`, `tUserType`) VALUES
+('admin', 'admin', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

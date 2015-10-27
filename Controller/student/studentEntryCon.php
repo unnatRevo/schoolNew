@@ -36,7 +36,7 @@ include '../../Model/dbStudent.php';
 		
 		//echo print_r($myvalue);
 		
-				$Standard = $_POST['btStreamGroup'];
+		$Standard = $_POST['btStreamGroup'];
 		
 		$obj = new dbStudent;
 		$conn = $obj->dbconnectModel( ) ;

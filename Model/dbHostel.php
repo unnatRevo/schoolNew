@@ -23,7 +23,8 @@ class dbHostel
 					. " nHostelId, "
 					. " tHostelName, "
 					. " tHostelAddress, "
-					. " bHostelFor "
+					. " bHostelFor, "
+					. " nMaxCapacity "
 				. "FROM "
 					. " tblhostel" ;
 

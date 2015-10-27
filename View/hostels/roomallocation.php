@@ -40,19 +40,6 @@ include '../../Model/dbStudent.php' ;
 </head>
 
 <body>
-		<!-- start: Header -->
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="index.html"><span>School</span></a>
-			</div>
-		</div>
-	</div>
 	<!-- start: Header -->
 	
 		<div class="container-fluid-full">
@@ -61,7 +48,7 @@ include '../../Model/dbStudent.php' ;
 			<!-- start: Main Menu -->
 
 			<?php
-				include '../mainMenu.html';
+				include '../../mainMenu.html';
 			?>
 
 			<!--
@@ -273,7 +260,7 @@ include '../../Model/dbStudent.php' ;
 	<footer>
 
 		<p>
-			<span style="text-align:left;float:left">&copy; 2015 School Demo</span>
+			<span style="text-align:left;float:left">&copy; 2015 School</span>
 		</p>
 
 	</footer>

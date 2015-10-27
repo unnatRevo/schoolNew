@@ -37,19 +37,7 @@
 </head>
 
 <body>
-		<!-- start: Header -->
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="index.html"><span>School</span></a>
-			</div>
-		</div>
-	</div>
+	
 	<!-- start: Header -->
 	
 		<div class="container-fluid-full">
@@ -58,7 +46,7 @@
 			<!-- start: Main Menu -->
 
 			<?php
-				include '../mainMenu.html';
+				include '../../mainMenu.html';
 			?>
 
 			<!--
@@ -81,9 +69,12 @@
 			
 			
 			<ul class="breadcrumb">
-				<li>
+			<li>
 					<i class="icon-home"></i>
-					<a href="#">Home</a> 
+					<a href="../dashboard.php">Home</a> 
+					<i class="icon-angle-right"></i>
+				</li>
+				<li><a href="hostelList.php">Hostel List</a>
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">Add Rooms</a></li>
@@ -115,14 +106,23 @@
 							  </div>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Hostel Id</label>
-								<div class="controls">
-								  <input class="input-xlarge focused" name="nHostelId" type="number" value="<?php echo $id ;?>">
-								</div>
+								<!-- <label class="control-label" for="focusedInput"><?php echo $id ;?></label>
+								 -->
+								 <div class = "controls">
+								 	<input class="input-xlarge-focused" disabled="true" name="nHostelId" type="number" value="<?php echo $id ;?>">
+								 </div>
 							  </div>
+
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Max Capacity</label>
-								<div class="controls">
-								  <input class="input-xlarge focused" name="nMaxCapacity" type="number" value="<?php echo $cap ;?>">
+								<!-- <label class="control-label" for="focusedInput"><?php echo $cap ;?></label>
+								 -->
+								 <div class = "controls">
+								 	<input class="input-xlarge-focused" disabled="true" name="nMaxCapacity" type="number" value="<?php echo $cap ;?>">
+								 </div>
+							  
+								 <div class="control-group">
+								<label class="control-label" for="focusedInput"></label>
 								</div>
 							  
 							  <div class="form-actions">
@@ -154,7 +154,7 @@
 	<footer>
 
 		<p>
-			<span style="text-align:left;float:left">&copy; 2015 School Demo</span>
+			<span style="text-align:left;float:left">&copy; 2015 School</span>
 		</p>
 
 	</footer>

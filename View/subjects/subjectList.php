@@ -32,19 +32,7 @@ include '../../Model/dbSubject.php';
 </head>
 
 <body>
-		<!-- start: Header -->
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="index.html"><span>School</span></a>
-			</div>
-		</div>
-	</div>
+	
 	<!-- start: Header -->
 	
 		<div class="container-fluid-full">
@@ -53,7 +41,7 @@ include '../../Model/dbSubject.php';
 			<!-- start: Main Menu -->
 
 			<?php
-				include '../mainMenu.html';
+				include '../../mainMenu.html';
 			?>
 
 			<!-- end: Main Menu -->
@@ -67,7 +55,7 @@ include '../../Model/dbSubject.php';
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="#">Home</a> 
+					<a href="../dashboard.php">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">Subject List</a></li>
@@ -158,12 +146,6 @@ include '../../Model/dbSubject.php';
 		
 			</div><!--/.fluid-container-->
 				
-			
-			<!-- ---------------- -->	
-			
-			
-
-			<!-- ---------------- -->
 	
 			<!-- end: Content -->
 		</div><!--/#content.span10-->
@@ -171,10 +153,12 @@ include '../../Model/dbSubject.php';
 		
 	<div class="clearfix"></div>
 	
+	
 	<footer>
 
 		<p>
-			<span style="text-align:left;float:left">&copy; 2015 School Demo</span>
+			<span style="text-align:left;float:left">&copy; 2015 School </a></span>
+			
 		</p>
 
 	</footer>

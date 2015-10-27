@@ -87,22 +87,8 @@ function fetch_r( hostelList, standard )
 --> 
 
 
+
 <body>
-		<!-- start: Header -->
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="index.html"><span>School</span></a>
-								
-				
-				
-			</div>
-		</div>
 	</div>
 	<!-- start: Header -->
 	
@@ -112,7 +98,7 @@ function fetch_r( hostelList, standard )
 			<!-- start: Main Menu -->
 
 			<?php
-				include '../mainMenu.html';
+				include '../../mainMenu.html';
 			?>
 
 			<!--
@@ -142,10 +128,14 @@ function fetch_r( hostelList, standard )
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="#">Home</a> 
+					<a href="../dashboard.php">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">Hostel List</a></li>
+				<li><a href="hostelList.php">Hostel List</a>
+					<i class="icon-angle-right"></i>
+				</li>
+				
+				<li><a href="#">Hostel Student Entry</a></li>
 			</ul>		
 			
 			
@@ -157,13 +147,7 @@ function fetch_r( hostelList, standard )
 							<span class="break"></span>
 							<b>Hostels</b>
 						</h2>
-						<div class="box-icon">
-						<a href="hostelEntry.php"><i class="halflings-icon plus"></i></a>
-							<a href="#" class="btn-minimize">
-								<i class="halflings-icon chevron-up"></i>
-							</a>
-						</div>
-					</div>
+							</div>
 					
 				
 					<?php
@@ -397,7 +381,7 @@ function fetch_r( hostelList, standard )
 	<footer>
 
 		<p>
-			<span style="text-align:left;float:left">&copy; 2015 School Demo</span>
+			<span style="text-align:left;float:left">&copy; 2015 School</span>
 		</p>
 
 	</footer>
