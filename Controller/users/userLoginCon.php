@@ -8,10 +8,10 @@ session_start();
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	
-	$_SESSION['username'] = $username;
 	while ($row = mysqli_fetch_assoc($result)){
-		if ( $username == $row['tUsername']  && $password == $row['tPassword'] ){
-			header('location: /schoolNew/View/students/studentList.php');
+		if ( $username === $row['tUsername']  && $password === $row['tPassword'] ){
+			$_SESSION['username'] = $username;
+			header('location: /schoolNew/View/dashboard.php');
 		} else {
 			header ("location: /schoolNew/View/errors/noUserFound.php");
 		}

@@ -27,10 +27,10 @@ class dbSubject
 					. " nStandardId, "
 					. " tStandardName "
 				. "FROM "
-					. " tblSubject, "
-					. " tblStandard "
+					. " tblsubject, "
+					. " tblstandard "
 				. " WHERE "
-					. " tblStandard.nStandardId = tblSubject.nForStandard "
+					. " tblstandard.nStandardId = tblsubject.nForStandard "
 				. " ORDER BY "
 					. " tStandardName ASC, "
 					. " tSubjectName ASC " ;
@@ -56,7 +56,7 @@ class dbSubject
 		$conn = $this->dbconnectModel();
 		
 		$qry = "INSERT INTO "
-					. " tblSubject "
+					. " tblsubject "
 					. " ( "
 						. " tSubjectName, "
 						. " nForStandard "
@@ -112,7 +112,7 @@ class dbSubject
 		$qry = "SELECT "
 					. " * "
 				. " FROM "
-					. " tblSubject "
+					. " tblsubject "
 				. " WHERE "
 					. " nSubjectId = '$id' " ;
 		

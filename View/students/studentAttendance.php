@@ -68,8 +68,6 @@ function checkAll( checkAllForm )
 	}
 }
 
-				  	
-
 function togglenGRNOCheckbox( checkAllForm )
 {
 	alert( "OK" ) ;
@@ -103,7 +101,8 @@ function ifAnyChange( checkAllForm )
 
 
 <body>
-
+		<!-- start: Header -->
+		
 	<!-- start: Header -->
 	
 		<div class="container-fluid-full">
@@ -124,7 +123,7 @@ function ifAnyChange( checkAllForm )
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="../dashboard.php">Home</a> 
+					<a href="#">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
 				<li><a href="#">Student Attendance</a></li>
@@ -227,17 +226,6 @@ function ifAnyChange( checkAllForm )
 
 									   		}
 										?>
-								
-							<!-- </td >
-							<td>
-								<input type="checkbox" name="Physics" value="" /> Physics &nbsp;&nbsp;
-							</td>
-							<td>
-								<input type="checkbox" name="Biology" value="" /> BIOLOGY &nbsp;&nbsp;
-							</td>
-							<td>
-								<input type="checkbox" name="Maths" value="" /> MATHS &nbsp;&nbsp;
-							</td> -->
 							</tr> 
 						</table>
 							</div>
@@ -347,7 +335,7 @@ function ifAnyChange( checkAllForm )
 											}
 											else
 											{
-										?>			<input type="checkbox"  name="<?php echo $stud[ 'nGRNO' ] ; ?>" value=" <?php echo $stud[ 'nGRNO' ] ; ?>" onchange=' ifAnyChange( "checkAllForm" ) ; ' />
+										?>		<input type="checkbox"  name="<?php echo $stud[ 'nGRNO' ] ; ?>" value=" <?php echo $stud[ 'nGRNO' ] ; ?>" onchange=' ifAnyChange( "checkAllForm" ) ; ' />
 										<?php
 											}
 										?>
@@ -419,7 +407,7 @@ function ifAnyChange( checkAllForm )
 	<footer>
 
 		<p>
-			<span style="text-align:left;float:left">&copy; 2015 School</span>
+			<span style="text-align:left;float:left">&copy; 2015 School Demo</span>
 		</p>
 
 	</footer>

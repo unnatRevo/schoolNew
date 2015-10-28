@@ -97,7 +97,7 @@ include '../../Model/dbStudent.php';
 								  <th style="text-align:center">Gender</th>
 								  <th style="text-align:center">Birth Date</th>
 								  <th style="text-align:center">Hostel Stay</th>
-								  <th style="text-align:center">View</th>
+								  <th style="text-align:center">Report View</th>
 								  <th style="text-align:center">Edit</th>
 								  <th style="text-align:center">Delete</th>
 							  </tr>
@@ -173,7 +173,7 @@ include '../../Model/dbStudent.php';
 								</td>
 								
 								<td class="center" style="text-align:center">
-									<a href="studentView.php?id=<?php echo $row['nGRNO']; ?>"> 
+									<a href="studentReport.php?id=<?php echo $row['nGRNO']; ?>"> 
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
 								</td>

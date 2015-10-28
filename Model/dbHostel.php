@@ -107,6 +107,21 @@ class dbHostel
 		$qry = "SELECT tRoomNo, nRoomId, nMaxCapacity FROM tblhostelrooms WHERE nHostelId= '$nHostelId' " ;
 		return mysqli_query($conn, $qry);
 	}
+	function getSingleRoomView($id){
+		$conn = $this->dbconnectModel();
+		$qry = "SELECT * FROM tblhostel WHERE nHostelId = $id";
+		return mysqli_query($conn, $qry);
+	}
+	function countRoomFormSingelHostel($id){
+		$conn = $this->dbconnectModel();
+		$qry = "SELECT count(nHostelId) FROM tblhostelrooms WHERE nHostelId=$id";
+		return mysqli_query($conn , $qry);
+	}
+	function countTotalStudentForSingleHoste($id){
+		$conn = $this->dbconnectModel();
+		$qry = "SELECT COUNT(nGRNO) FROM tblstudentroomallocation WHERE nHostelId= $id";
+		return mysqli_query($conn, $qry);
+	}
 
 	// author : Unnat
 

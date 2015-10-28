@@ -145,17 +145,7 @@
 								<span class="add-on"><i class="halflings-icon font"></i></span>
 								<input class="input-large span10" name="lname" required="true" id="lname" type="text" placeholder="Last Name"/>
 						</div>
-						<div class="clearfix"></div>
-						
-						<div class="input-prepend" title="User type">
-								<span class="add-on"><i class="halflings-icon user"></i></span>
-								<select name="usertype" id="usertype">
-									<option value="Admin" selected="Admin">Admin</option>
-									<option value="Standerd">Standerd</option>
-								</select>
-						</div>
-						<div class="clearfix"></div>
-						
+						<div class="clearfix"></div>						
 						<div class="input-prepend">
 								<a href="../../View/user/login.php"  class="btn btn-link">Already have access?</a>
 								<button class="btn btn-primary" type="submit" data-noty-options='{"text":"This is an error notification","layout":"bottomLeft","type":"error"}'+>Signup</button>

@@ -1,22 +1,9 @@
 <?php
+session_start();
 include '../../Model/dbHostel.php';
-
 $id 	= $_GET['id'];
-
 $obj 	= new dbHostel;
-$result = $obj->hostelViewSingle($id);
-$row 	= mysqli_fetch_assoc($result);
-
 //print_r($row);
-
-if ( $row['bHostelFor'] == 1 )
-{
-	$for = "Boys";
-}
-else
-{
-	$for = "Girls";
-}
 
 //echo "<br>".$for;
 
@@ -27,7 +14,7 @@ else
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Hostel List</title>
+	<title>Hostel Report</title>
 	
 	<!-- end: Meta -->
 	
@@ -52,6 +39,9 @@ else
 </head>
 
 <body>
+
+		<!-- start: Header -->
+	
 	<!-- start: Header -->
 	
 		<div class="container-fluid-full">
@@ -91,58 +81,92 @@ else
 				<li><a href="hostelList.php">Hostel List</a>
 					<i class="icon-angle-right"></i>
 				</li>
-				<li>
-					<a href="#">Hostel View</a>
-				</li>
+				<li><a href="#">Student Report</a></li>
 			</ul>		
 				
 			
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon list"></i><span class="break"></span><b>Hostels</b></h2>
+						<h2><i class="halflings-icon list"></i><span class="break"></span><b>Hostel Report</b></h2>
 						<div class="box-icon">
 						
-							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+							<a href="hostelList.php" class="btn-minimize"><i class="halflings-icon chevron-left"></i> Back to list</a>
 						</div>
 					</div>
-					
-					
 					<?php
-						$obj = new dbHostel;
-						$result = $obj->getDataHostelModel1();
+						$result = $obj->getSingleRoomView($id);
+						while ($row = mysqli_fetch_assoc($result)){
 					?>
-					
-					
 					<div class="box-content">
-						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								  <th style="text-align:center">Hostel ID</th>
-								  <th style="text-align:center">Hostel Name</th>
-								  <th style="text-align:center">Hostel For</th>
-								  <th style="text-align:center">Hostel Address</th>
-								  <th style="text-align:center">Hostel Capacity</th>
-								  <th style="text-align:center">Room Capacity</th>
-								  
-							  </tr>
-						  </thead>
-								<tr>
-									<td style="text-align:center"><?php echo $row['nHostelId']; ?></td>
-									<td style="text-align:center"><?php echo $row['tHostelName']; ?></td>
-									<td style="text-align:center" ><?php echo $for ?></td>
-									<td style="text-align:center"><?php echo $row['tHostelAddress']; ?></td>
-									<td style="text-align:center"><?php echo $row['nHostelCapacity']; ?></td>
-									<td style="text-align:center"><?php echo $row['nMaxCapacity']; ?></td>
-									
-								</tr>
-						  <tbody>
-						
+					
+					<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						<tr>
 							
-						  </tbody>
-					  </table>            
+							
+							<td>
+								<table class="table table-striped table-bordered bootstrap-datatable datatable">
+									<tr>
+										<td style="width:100px;">Hostel name</td>
+										<td><?php echo $row['tHostelName']; ?></td>
+									</tr>
+									<tr>
+										<td>Hostel for</td>
+										<td><?php 
+											if ( $row['bHostelFor'] == 1 ) echo "<font color='blue'>Male</font>";
+											else echo "<font color='magenta'>Female</font>";
+										?></td>
+									</tr>
+									<tr>
+										<td>Location</td>
+										<td> <?php echo  $row['tHostelAddress']; ?> </td>
+									</tr>
+									<tr>
+										<td>Hostel Capactiy</td>
+										<td><?php echo $row['nHostelCapacity'];} ?></td>
+									</tr>
+								
+							</td>
+						
+						<tr>
+							<td>Total rooms</td>
+							<td><?php
+								$hostelRoom = $obj->countRoomFormSingelHostel($id);
+								$row = mysqli_fetch_assoc($hostelRoom);
+								echo implode("", $row);
+							 ?></td>
+						</tr>
+						<tr>
+							<td>Present Students</td>
+							<td>
+								<?php
+									$totalStudent = $obj->countTotalStudentForSingleHoste($id);
+									$row = mysqli_fetch_assoc($totalStudent);
+									echo implode("",$row);
+								?>
+							</td>
+						</tr>
+						<tr>
+							<td>Attendence</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td>Group</td>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+					</tr>
+				</table>
+					</table>
 					</div>
+					<?php
+					//s}
+					?>
 				</div><!--/span-->
+					
 			
 			</div><!--/row-->
 		
@@ -161,7 +185,7 @@ else
 	<footer>
 
 		<p>
-			<span style="text-align:left;float:left">&copy; 2015 School</span>
+			<span style="text-align:left;float:left">&copy; <?php echo date('Y') ?> School</span>
 		</p>
 
 	</footer>

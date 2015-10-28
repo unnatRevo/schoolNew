@@ -1,5 +1,6 @@
 <?php
 include '../../Model/dbHostel.php';
+// $id 	= $_GET['id'];
 ?>
 
 <html lang="en">
@@ -41,7 +42,7 @@ include '../../Model/dbHostel.php';
 			<!-- start: Main Menu -->
 
 			<?php
-				include '../../mainMenu.html';
+				include '../../mainMenu.php';
 			?>
 
 			<!--
@@ -109,7 +110,8 @@ include '../../Model/dbHostel.php';
 								  <th>Hostel Name</th>
 								  <th>Hostel Address</th>
 								  <th>Hostel For</th>
-								  <th style="text-align:center">View</th>
+								  <th>Add Room</th>
+								  <th style="text-align:center">Report View</th>
 								  <th style="text-align:center">Edit</th>
 								  <th style="text-align:center">Delete</th>
 							  </tr>
@@ -151,9 +153,12 @@ include '../../Model/dbHostel.php';
 										}
 									?>
 								</td>
-								
 								<td class="center" style="text-align:center">
-									<a href="hostelView.php?id=<?php echo $row['nHostelId']; ?>">
+								<a href="hostelRoomEntry.php?id=<?php echo $row[ 'nHostelId']; ?> & cap=<?php echo $row['nMaxCapacity']; ?>" >
+									<i class="halflings-icon plus"></i></a>
+								</td>
+								<td class="center" style="text-align:center">
+									<a href="hostelReport.php?id=<?php echo $row['nHostelId']; ?>">
 										<font color="green"><i class="fa fa-list-alt"></i></font>
 									</a>
 								</td>

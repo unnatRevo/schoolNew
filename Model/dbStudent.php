@@ -27,7 +27,7 @@ class dbStudent
 					. " dBirthDate, "
 					. " bStaysAtHostel "
 				. " FROM "
-					. " tblStudent " 
+					. " tblstudent " 
 				."WHERE"
 					." bGender = " . $id ;
 		
@@ -48,7 +48,7 @@ class dbStudent
 					. " dBirthDate, "
 					. " bStaysAtHostel "
 				. " FROM "
-					. " tblStudent "  ;
+					. " tblstudent "  ;
 		
 		$result = mysqli_query( $conn, $qry ) ;
 		
@@ -426,6 +426,21 @@ class dbStudent
 		mysqli_close($conn);
 		
 	}*/
+	function studentStandard($id){
+		$conn = $this->dbconnectModel();
+		$qry = "SELECT nStandardId FROM tblstudentstandard WHERE nGRNO = $id";
+		$result = mysqli_query($conn, $qry);
+		return $result;
+	}
+	function getSingleStudentView($id){
+		$conn = $this->dbconnectModel( ) ;
+
+		$qry = " SELECT * FROM tblstudent WHERE nGRNO = $id";
+		
+		$result = mysqli_query( $conn, $qry ) ;
+		
+		return $result ;
+	}
 
 	function editAnyData($tablename,$values,$id)
 	{
@@ -462,6 +477,7 @@ class dbStudent
 	}
 
 }
+
 
 
 	// function checkDate( $atdDate )

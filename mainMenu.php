@@ -1,4 +1,7 @@
-<!-- start: Header -->
+
+<?php
+session_start();
+?><!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -18,14 +21,12 @@
 						<!-- start: User Dropdown -->
 						<li class="dropdown">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="halflings-icon white user"></i> User
+								<i class="halflings-icon white user"></i>
+								<?php echo $_SESSION['username']; ?>
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li class="dropdown-menu-title">
- 									<span>Account Settings</span>
-								</li>
-								<li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+								<li><a href="/schoolNew/Controller/users/userLogoutCon.php"><i class="halflings-icon off"></i> Logout</a></li>
 							</ul>
 						</li>
 						<!-- end: User Dropdown -->

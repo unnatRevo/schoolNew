@@ -71,7 +71,7 @@
 	}
 ?>		
 			<?php
-				include '../mainMenu.html';
+				include '../mainMenu.php';
 			?>
 			
 			<!-- start: Content -->
